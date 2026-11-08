@@ -1,0 +1,211 @@
+# LessonForge rubric — every check is a hard PASS / FAIL. A lesson ships only if ALL checks pass.
+#
+# type: code  -> deterministic Python check (checks.py). Cheap, repeatable, cannot be argued with.
+# type: llm   -> LLM judge (judge.py). Must quote evidence; quotes are verified against the lesson text.
+#
+# Dimensions (from the brief): accurate & grounded, beginner-friendly language, teaches by example,
+# clear / no unexplained jargon, covers the key points, coherent teaching flow.
+
+version: 1
+
+checks:
+  # ---------------- coherent teaching flow ----------------
+  - id: STRUCTURE
+    dimension: coherent teaching flow
+    type: code
+    fn: structure
+    description: All required sections are present, in teaching order.
+    params:
+      sections:   # matched in order against the lesson's "## " headings (case-insensitive substring)
+        - {key: learn,   match: ["what you will learn", "in this lesson"]}
+        - {key: basics,  match: ["before we start", "basic"]}
+        - {key: what,    match: ["what is"]}
+        - {key: why,     match: ["why"]}
+        - {key: how,     match: ["how"]}
+        - {key: example, match: ["example"]}
+        - {key: words,   match: ["key words", "words to remember", "glossary"]}
+        - {key: quiz,    match: ["quick check", "quiz", "check your understanding"]}
+        - {key: summary, match: ["summary", "recap"]}
+
+  - id: FLOW
+    dimension: coherent teaching flow
+    type: llm
+    group: pedagogy
+    description: Ideas build in a logical order with no forward references.
+    criterion: >
+      PASS only if every idea is introduced before it is used (no term or step is used first and explained
+      later), each section builds on the previous one, and the lesson moves from the learner's problem
+      -> what RAG is -> why it matters -> how it works -> a worked example -> recap. FAIL if any section
+      depends on an idea or step not yet taught, or if the lesson jumps around. (Whether single technical
+      WORDS are defined at first use is judged by the JARGON check — do not fail FLOW for that.)
+
+  # ---------------- beginner-friendly language ----------------
+  - id: SENTENCE_LENGTH
+    dimension: beginner-friendly language
+    type: code
+    fn: sentence_length
+    description: Short sentences for a reader with limited English.
+    params: {max_avg_words: 16, max_words: 30}
+
+  - id: READABILITY
+    dimension: beginner-friendly language
+    type: code
+    fn: readability
+    description: Flesch Reading Ease score is high enough for plain English.
+    params: {min_flesch: 60}
+
+  - id: AVOID_WORDS
+    dimension: beginner-friendly language
+    type: code
+    fn: avoid_words
+    description: No idioms, slang or needlessly complex English words.
+    params:
+      words: [leverage, utilize, utilise, paradigm, plethora, myriad, facilitate, henceforth, thereby,
+              aforementioned, nuanced, robust, seamless, seamlessly, cutting-edge, game-changer,
+              "piece of cake", "under the hood", "in a nutshell", "ballpark", "on the fly",
+              "rule of thumb", "low-hanging fruit", "the bottom line", "deep dive", "silver bullet",
+              "boils down to", "kicks in", "out of the box", "hit the ground running", "no-brainer",
+              delve, "crucial", "pivotal", "intricate", "encompass", "albeit", "whereby", "notwithstanding"]
+
+  - id: PLAIN_LANGUAGE
+    dimension: beginner-friendly language
+    type: llm
+    group: pedagogy
+    description: Language suits a non-native, non-English-medium 12th-grade graduate.
+    criterion: >
+      PASS only if the lesson uses common everyday English words, speaks directly to the learner ("you"),
+      uses active voice, and contains no idioms, slang, sarcasm, culture-specific references the learner
+      would not know (e.g. American sports or holidays) or difficult phrasal verbs. FAIL if you can quote
+      any sentence such a learner would likely struggle to understand because of its words or grammar.
+
+  - id: LENGTH
+    dimension: beginner-friendly language
+    type: code
+    fn: length
+    description: Long enough to be standalone, short enough to finish in one sitting.
+    params: {min_words: 900, max_words: 2600}
+
+  # ---------------- clear, no unexplained jargon ----------------
+  - id: ACRONYMS
+    dimension: clear, no unexplained jargon
+    type: code
+    fn: acronyms
+    description: Every acronym is expanded at (or right before) its first use.
+    params:
+      window_chars: 250
+      known:
+        RAG: retrieval augmented generation
+        LLM: large language model
+        LLMs: large language model
+        AI: artificial intelligence
+        API: application programming interface
+        PDF: portable document format
+        ML: machine learning
+        GPT: generative pre-trained transformer
+      # widely known in India, or ordinary English words written in capitals for emphasis
+      allow: [OK, UPI, ID, PDF, AM, PM, NOT, NO, YES, AND, OR, ONLY, ALL, ALWAYS, NEVER, NOTE, TIP, IMPORTANT, STOP]
+
+  - id: DEFINED_BEFORE_USE
+    dimension: clear, no unexplained jargon
+    type: code
+    fn: defined_before_use
+    description: Core technical terms are defined at their first use (deterministic backstop for JARGON).
+    params:
+      terms: [training data, knowledge cutoff, hallucination, prompt, token, chunk, embedding,
+              embedding model, vector, vector database, semantic search, context window, fine-tuning,
+              weights, indexing, top-k, retraining]
+
+  - id: GLOSSARY
+    dimension: clear, no unexplained jargon
+    type: code
+    fn: glossary
+    description: The Key Words section gives each term a simple meaning.
+    params: {min_entries: 8}
+
+  - id: JARGON
+    dimension: clear, no unexplained jargon
+    type: llm
+    group: pedagogy
+    description: Every technical term is explained in simple words the first time it appears.
+    criterion: >
+      PASS only if EVERY technical term (for example: model, LLM, prompt, token, training data, knowledge
+      cutoff, hallucination, retrieval, chunk, embedding, vector, vector database, semantic search, context,
+      fine-tuning, weights) is explained in simple words at or before its FIRST use in the body of the
+      lesson. The "What You Will Learn" list may NAME a concept as a learning goal (e.g. "what an LLM is",
+      "what chunks are") — that is not a use. A definition that appears only in the glossary at the end
+      does not count. FAIL and list EVERY unexplained term (quote the first one as evidence).
+
+  # ---------------- teaches by example ----------------
+  - id: ANALOGY
+    dimension: teaches by example
+    type: llm
+    group: pedagogy
+    description: Uses a relatable everyday analogy for the core idea.
+    criterion: >
+      PASS only if the core idea of RAG is explained with at least one everyday analogy from life in India
+      that this learner would know (for example an open-book exam, a library, a kirana shop owner checking
+      a register, a railway enquiry counter), AND the analogy is mapped back to the real parts of RAG
+      (which part of the analogy is retrieval, which is generation). FAIL if there is no analogy, the
+      analogy is foreign to the learner, or it is never connected back to RAG.
+
+  - id: WORKED_EXAMPLE
+    dimension: teaches by example
+    type: llm
+    group: pedagogy
+    description: A concrete worked example walks through every step.
+    criterion: >
+      PASS only if the lesson contains a concrete worked example with a specific user question, shows the
+      actual retrieved text (what was found), shows how it is added to the prompt, and shows the final
+      answer — i.e. retrieve, augment and generate are each visible with specific content. A
+      before/after comparison (answer without RAG vs with RAG) is ideal. FAIL if the example stays
+      abstract or skips a step.
+
+  # ---------------- accurate & grounded ----------------
+  - id: ACCURACY
+    dimension: accurate & grounded
+    type: llm
+    group: grounding
+    description: No factual errors or misconceptions versus the reference sheet.
+    criterion: >
+      PASS only if no sentence in the lesson contradicts the REFERENCE SHEET and none of the listed
+      misconceptions (M1-M7) appears, even in a softened form. Simplification is allowed; being wrong is
+      not. FAIL and quote every incorrect sentence.
+
+  - id: GROUNDED_DEFINITION
+    dimension: accurate & grounded
+    type: llm
+    group: grounding
+    description: The definition and step order of RAG match the reference.
+    criterion: >
+      PASS only if the lesson gives the correct full form of RAG, explains each of its three words
+      correctly, and describes the steps in the correct order (prepare knowledge -> retrieve -> augment
+      -> generate) as in reference facts F5, F7 and F8. FAIL otherwise.
+
+  - id: NO_OVERCLAIM
+    dimension: accurate & grounded
+    type: llm
+    group: grounding
+    description: Benefits are stated honestly; at least one limitation is given.
+    criterion: >
+      PASS only if the lesson does not oversell RAG (no "always correct", "never makes mistakes",
+      "100% accurate", "removes hallucinations") and clearly TEACHES at least one real limitation from
+      reference fact F12 in the main body (What/Why/How sections). A limitation that appears only in the
+      Quick Check or Summary does not count. FAIL otherwise.
+
+  # ---------------- covers the key points ----------------
+  - id: COVERAGE
+    dimension: covers the key points
+    type: llm
+    group: grounding
+    description: Covers every must-cover point K1-K7 from the reference sheet.
+    criterion: >
+      PASS only if EVERY must-cover point K1 to K7 from the reference sheet is taught in the main body (not
+      just mentioned in passing, and not only in the Quick Check or Summary). FAIL and name each missing
+      point as "MISSING: K<n> ...".
+
+  - id: QUIZ
+    dimension: covers the key points
+    type: code
+    fn: quiz
+    description: Ends with a self-check quiz that has answers.
+    params: {min_questions: 3}

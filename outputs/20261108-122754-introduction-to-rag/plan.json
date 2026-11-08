@@ -1,0 +1,195 @@
+{
+  "learning_goals": [
+    "Explain what a large language model (LLM) is and its limits",
+    "Describe what RAG stands for and what each word means",
+    "List the three steps of RAG in the correct order",
+    "Tell why RAG helps and one limit of RAG"
+  ],
+  "terms_in_order": [
+    "large language model (LLM)",
+    "training data",
+    "knowledge cutoff",
+    "hallucination",
+    "Retrieval-Augmented Generation (RAG)",
+    "retrieval",
+    "augment",
+    "generate",
+    "chunk",
+    "embedding",
+    "embedding model",
+    "vector",
+    "vector database",
+    "semantic search",
+    "prompt",
+    "context",
+    "fine-tuning",
+    "weights",
+    "retraining"
+  ],
+  "analogy": {
+    "story": "A student sits for an open-book exam. The student first looks up the right page in the book (retrieval). Then the student writes the answer using that page (generation).",
+    "mapping": "Looking up the page is retrieval. Writing the answer is generation. The book is the knowledge base."
+  },
+  "worked_example": {
+    "setting": "A college student in Delhi uses a chatbot on the college website to ask about hostel fees.",
+    "question": "What is the hostel fee for first-year B.Sc students this year?",
+    "documents": [
+      "Hostel fee for 2024-25: B.Sc first year Rs 45,000 per year.",
+      "Mess charges are extra: Rs 3,000 per month.",
+      "Last year 2023-24 fee was Rs 40,000."
+    ],
+    "retrieved": "Hostel fee for 2024-25: B.Sc first year Rs 45,000 per year.",
+    "answer_without_rag": "The hostel fee is around Rs 40,000 per year (old data).",
+    "answer_with_rag": "The hostel fee for first-year B.Sc students in 2024-25 is Rs 45,000 per year."
+  },
+  "sections": [
+    {
+      "heading": "## What You Will Learn",
+      "goal": "Show the learner the four goals of this lesson.",
+      "points": [
+        "You will explain what a large language model (LLM) is and its limits (K1).",
+        "You will describe what RAG stands for and what each word means (K2).",
+        "You will list the three steps of RAG in the correct order (K3).",
+        "You will tell why RAG helps and one limit of RAG (K5, K6)."
+      ]
+    },
+    {
+      "heading": "## Before We Start: Some Basic Ideas",
+      "goal": "Explain AI, LLM, training data, knowledge cutoff, and hallucination in simple words.",
+      "points": [
+        "AI is a computer program that can do tasks that need human thinking (F1).",
+        "A large language model (LLM) is an AI model trained on a very large amount of text. It generates text by predicting the next word (F1).",
+        "Training data is the huge collection of text used to teach the LLM (F2).",
+        "Knowledge cutoff is the date when the training data stops. The LLM does not know events after that date (F2).",
+        "Hallucination is when the LLM makes up answers that sound confident but are wrong (F4).",
+        "An LLM does not know private information like your college fee list (F3)."
+      ]
+    },
+    {
+      "heading": "## What Is RAG?",
+      "goal": "Define RAG and explain the meaning of each word in the name.",
+      "points": [
+        "RAG stands for Retrieval-Augmented Generation (F5).",
+        "Retrieval means finding and fetching relevant pieces of information (F5).",
+        "Augmented means added to or made stronger. The retrieved text is added to the question (F5).",
+        "Generation means the LLM writes the answer using the question plus the retrieved text (F5).",
+        "RAG does not change the model. The model weights stay the same (F9)."
+      ]
+    },
+    {
+      "heading": "## Why Does RAG Matter?",
+      "goal": "List the benefits of RAG and contrast with fine-tuning.",
+      "points": [
+        "RAG lets the LLM use up-to-date and private information (F11).",
+        "RAG reduces made-up answers but does not remove them fully (F11).",
+        "Answers can show their sources (F11).",
+        "RAG is cheaper and faster than retraining the model (F11).",
+        "Knowledge is easy to update by changing the documents (F11).",
+        "Fine-tuning trains the model further and changes its weights. It is slower and costlier (F10).",
+        "RAG is usually the better first choice for new or changing facts (F10)."
+      ]
+    },
+    {
+      "heading": "## How Does RAG Work?",
+      "goal": "Explain the preparation step and the three question-time steps in order.",
+      "points": [
+        "Preparation (indexing) is done before questions arrive (F7).",
+        "Collect documents, split them into small pieces called chunks (F7).",
+        "A chunk is a small piece of text (F7).",
+        "Turn each chunk into an embedding using an embedding model (F7).",
+        "An embedding is a list of numbers that captures the meaning of the text (F7).",
+        "An embedding model is a tool that changes text into embeddings (F7).",
+        "Store embeddings in a vector database (F7).",
+        "A vector database is a searchable index that holds vectors (F7).",
+        "A vector is a list of numbers that represents meaning (F7).",
+        "Question-time step 1: Retrieve. The user question is turned into an embedding. The system finds chunks with similar meaning using semantic search (F8).",
+        "Semantic search means searching by meaning, not just keywords (F8).",
+        "Question-time step 2: Augment. The retrieved chunks are placed into the prompt with the question and an instruction (F8).",
+        "A prompt is the text you give to the LLM to get an answer (F8).",
+        "Context is the extra information added to the prompt (F8).",
+        "Question-time step 3: Generate. The LLM writes the answer from the question plus the retrieved context (F8).",
+        "The LLM can also cite the sources it used (F8)."
+      ]
+    },
+    {
+      "heading": "## Example: College Hostel Fee Chatbot",
+      "goal": "Show a concrete Indian example of RAG in action.",
+      "points": [
+        "Setting: A college student in Delhi uses a chatbot on the college website (worked_example.setting).",
+        "Question: What is the hostel fee for first-year B.Sc students this year? (worked_example.question).",
+        "Documents in the knowledge base: three short snippets (worked_example.documents).",
+        "Retrieved snippet: the one with the current year fee (worked_example.retrieved).",
+        "Answer without RAG: the LLM uses old training data and says Rs 40,000 (worked_example.answer_without_rag).",
+        "Answer with RAG: the LLM uses the retrieved snippet and says Rs 45,000 (worked_example.answer_with_rag)."
+      ]
+    },
+    {
+      "heading": "## Key Words to Remember",
+      "goal": "List the important terms with one-line definitions.",
+      "points": [
+        "Large language model (LLM): an AI model trained on huge text that predicts the next word.",
+        "Training data: the text used to teach the LLM.",
+        "Knowledge cutoff: the date when training data stops.",
+        "Hallucination: when the LLM makes up wrong but confident answers.",
+        "Retrieval-Augmented Generation (RAG): a method that finds relevant text and adds it to the prompt before the LLM answers.",
+        "Retrieval: finding relevant pieces of information.",
+        "Augment: adding the retrieved text to the prompt.",
+        "Generate: the LLM writing the answer.",
+        "Chunk: a small piece of a document.",
+        "Embedding: a list of numbers that captures the meaning of text.",
+        "Embedding model: a tool that turns text into embeddings.",
+        "Vector: a list of numbers that represents meaning.",
+        "Vector database: a searchable index that stores vectors.",
+        "Semantic search: searching by meaning, not just keywords.",
+        "Prompt: the text you give to the LLM to get an answer.",
+        "Context: extra information added to the prompt.",
+        "Fine-tuning: training the model further on new examples to change its weights.",
+        "Weights: the learned internal numbers of the model.",
+        "Retraining: teaching the model again from scratch or continuing training to change its weights."
+      ]
+    },
+    {
+      "heading": "## Quick Check",
+      "goal": "Five simple questions to test understanding.",
+      "points": [
+        "What does LLM stand for? Answer: large language model.",
+        "What are the three steps of RAG in order? Answer: retrieve, augment, generate.",
+        "Does RAG change the model weights? Answer: No, RAG does not change the model weights.",
+        "What is one benefit of RAG? Answer: It lets the LLM use up-to-date and private information.",
+        "What is one limit of RAG? Answer: The answer depends on the quality of what is retrieved."
+      ]
+    },
+    {
+      "heading": "## Summary",
+      "goal": "Recap the main points in a few sentences.",
+      "points": [
+        "An LLM is trained on a fixed set of text and has a knowledge cutoff. It does not know private data and can hallucinate.",
+        "RAG stands for Retrieval-Augmented Generation. It adds a retrieval step before the LLM generates an answer.",
+        "The three steps are retrieve, augment, generate. Preparation creates chunks, embeddings, and a vector database.",
+        "RAG gives fresh and private information, shows sources, and avoids retraining. But the answer is only as good as the retrieved chunks."
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does RAG stand for?",
+      "a": "Retrieval-Augmented Generation"
+    },
+    {
+      "q": "In RAG, what happens in the retrieval step?",
+      "a": "The system finds the most relevant chunks from the knowledge base for the user question."
+    },
+    {
+      "q": "Does RAG retrain the LLM?",
+      "a": "No, RAG does not change the model weights. It only adds retrieved text to the prompt."
+    },
+    {
+      "q": "What is a chunk?",
+      "a": "A small piece of a document created during the preparation step."
+    },
+    {
+      "q": "Why might a RAG answer still be wrong?",
+      "a": "If the retrieval step returns the wrong or outdated chunks, the answer can be wrong."
+    }
+  ]
+}

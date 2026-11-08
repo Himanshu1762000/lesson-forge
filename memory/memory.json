@@ -1,0 +1,564 @@
+{
+  "version": 1,
+  "runs": [
+    {
+      "run_id": "20261108-095251-introduction-to-rag",
+      "topic": "Introduction to RAG",
+      "finished": "2026-11-08T09:59:10",
+      "status": "NEEDS_HUMAN_REVIEW",
+      "attempts": 3,
+      "inject_error": false,
+      "failed_per_attempt": [
+        [
+          "FLOW",
+          "READABILITY",
+          "ACRONYMS",
+          "JARGON",
+          "ANALOGY"
+        ],
+        [
+          "FLOW",
+          "READABILITY",
+          "JARGON"
+        ],
+        [
+          "READABILITY",
+          "JARGON"
+        ]
+      ]
+    },
+    {
+      "run_id": "20261108-100011-introduction-to-rag",
+      "topic": "Introduction to RAG",
+      "finished": "2026-11-08T10:09:57",
+      "status": "SHIPPED",
+      "attempts": 2,
+      "inject_error": false,
+      "failed_per_attempt": [
+        [
+          "LENGTH",
+          "ACRONYMS",
+          "JARGON",
+          "ANALOGY"
+        ],
+        []
+      ]
+    },
+    {
+      "run_id": "20261108-101430-introduction-to-rag",
+      "topic": "Introduction to RAG",
+      "finished": "2026-11-08T10:27:41",
+      "status": "NEEDS_HUMAN_REVIEW",
+      "attempts": 3,
+      "inject_error": false,
+      "failed_per_attempt": [
+        [
+          "ACRONYMS",
+          "DEFINED_BEFORE_USE",
+          "JARGON"
+        ],
+        [
+          "ACRONYMS",
+          "DEFINED_BEFORE_USE",
+          "JARGON"
+        ],
+        [
+          "FLOW",
+          "ACRONYMS",
+          "DEFINED_BEFORE_USE",
+          "JARGON"
+        ]
+      ]
+    },
+    {
+      "run_id": "20261108-102840-introduction-to-rag",
+      "topic": "Introduction to RAG",
+      "finished": "2026-11-08T10:36:46",
+      "status": "SHIPPED",
+      "attempts": 2,
+      "inject_error": false,
+      "failed_per_attempt": [
+        [
+          "PLAIN_LANGUAGE",
+          "ACRONYMS",
+          "ANALOGY"
+        ],
+        []
+      ]
+    },
+    {
+      "run_id": "20261108-103851-introduction-to-rag-inject",
+      "topic": "Introduction to RAG",
+      "finished": "2026-11-08T10:51:50",
+      "status": "SHIPPED",
+      "attempts": 3,
+      "inject_error": true,
+      "failed_per_attempt": [
+        [
+          "FLOW",
+          "AVOID_WORDS",
+          "PLAIN_LANGUAGE",
+          "ACRONYMS",
+          "DEFINED_BEFORE_USE",
+          "JARGON",
+          "ANALOGY",
+          "ACCURACY",
+          "NO_OVERCLAIM"
+        ],
+        [
+          "DEFINED_BEFORE_USE",
+          "JARGON"
+        ],
+        []
+      ]
+    },
+    {
+      "run_id": "20261108-124136-introduction-to-rag",
+      "topic": "Introduction to RAG",
+      "finished": "2026-11-08T13:17:58",
+      "status": "NEEDS_HUMAN_REVIEW",
+      "attempts": 3,
+      "inject_error": false,
+      "failed_per_attempt": [
+        [
+          "ACRONYMS",
+          "DEFINED_BEFORE_USE",
+          "JARGON",
+          "ANALOGY"
+        ],
+        [
+          "JARGON"
+        ],
+        [
+          "FLOW",
+          "JARGON"
+        ]
+      ]
+    },
+    {
+      "run_id": "20261108-133345-introduction-to-rag",
+      "topic": "Introduction to RAG",
+      "finished": "2026-11-08T13:38:13",
+      "status": "SHIPPED",
+      "attempts": 2,
+      "inject_error": false,
+      "failed_per_attempt": [
+        [
+          "PLAIN_LANGUAGE",
+          "DEFINED_BEFORE_USE",
+          "JARGON",
+          "ANALOGY"
+        ],
+        []
+      ]
+    },
+    {
+      "run_id": "20261108-135518-introduction-to-rag",
+      "topic": "Introduction to RAG",
+      "finished": "2026-11-08T14:08:02",
+      "status": "SHIPPED",
+      "attempts": 3,
+      "inject_error": false,
+      "failed_per_attempt": [
+        [
+          "LENGTH",
+          "ACRONYMS",
+          "DEFINED_BEFORE_USE",
+          "JARGON",
+          "ANALOGY"
+        ],
+        [
+          "JARGON"
+        ],
+        []
+      ]
+    }
+  ],
+  "check_stats": {
+    "STRUCTURE": {
+      "evaluations": 20,
+      "fails": 0,
+      "fails_since_rule": 0,
+      "samples": []
+    },
+    "FLOW": {
+      "evaluations": 20,
+      "fails": 4,
+      "fails_since_rule": 0,
+      "samples": [
+        {
+          "run_id": "20261108-095251-introduction-to-rag",
+          "attempt": 1,
+          "reason": "The term \"prompt\" is used before being explained, breaking the flow where ideas must be introduced before use.",
+          "evidence": "The retrieved text is added to the user question in the prompt."
+        },
+        {
+          "run_id": "20261108-095251-introduction-to-rag",
+          "attempt": 2,
+          "reason": "The term \"retraining\" is used before it is explained later in the lesson.",
+          "evidence": "It is cheaper and faster than retraining the model."
+        },
+        {
+          "run_id": "20261108-101430-introduction-to-rag",
+          "attempt": 3,
+          "reason": "The term 'chunks' is used in the 'Why Does RAG Matter?' section before it is defined in the later 'How Does RAG Work?' section (Preparation).",
+          "evidence": "If the search returns wrong or outdated chunks"
+        },
+        {
+          "run_id": "20261108-124136-introduction-to-rag",
+          "attempt": 3,
+          "reason": "The term 'chunks' is used in the 'Why Does RAG Matter?' section before it is defined in the later 'How Does RAG Work?' preparation section.",
+          "evidence": "The answer is only as good as the chunks (small pieces of a document) that are retrieved."
+        }
+      ]
+    },
+    "SENTENCE_LENGTH": {
+      "evaluations": 20,
+      "fails": 0,
+      "fails_since_rule": 0,
+      "samples": []
+    },
+    "READABILITY": {
+      "evaluations": 20,
+      "fails": 3,
+      "fails_since_rule": 0,
+      "samples": [
+        {
+          "run_id": "20261108-095251-introduction-to-rag",
+          "attempt": 1,
+          "reason": "Flesch Reading Ease 58.1 (need >= 60).",
+          "evidence": "58.1"
+        },
+        {
+          "run_id": "20261108-095251-introduction-to-rag",
+          "attempt": 2,
+          "reason": "Flesch Reading Ease 59.7 (need >= 60).",
+          "evidence": "59.7"
+        },
+        {
+          "run_id": "20261108-095251-introduction-to-rag",
+          "attempt": 3,
+          "reason": "Flesch Reading Ease 59.8 (need >= 60).",
+          "evidence": "59.8"
+        }
+      ]
+    },
+    "AVOID_WORDS": {
+      "evaluations": 20,
+      "fails": 0,
+      "fails_since_rule": 0,
+      "samples": []
+    },
+    "PLAIN_LANGUAGE": {
+      "evaluations": 20,
+      "fails": 2,
+      "fails_since_rule": 2,
+      "samples": [
+        {
+          "run_id": "20261108-102840-introduction-to-rag",
+          "attempt": 1,
+          "reason": "The sentence uses passive voice and does not speak directly to the learner with \"you\", making it harder for a beginner to understand.",
+          "evidence": "The text it read during learning is called training data."
+        },
+        {
+          "run_id": "20261108-133345-introduction-to-rag",
+          "attempt": 1,
+          "crit": "27a7d1439f",
+          "reason": "Uses passive voice instead of active voice, making the sentence harder for a beginner to understand.",
+          "evidence": "The retrieved text is added to the question in the prompt."
+        }
+      ]
+    },
+    "LENGTH": {
+      "evaluations": 20,
+      "fails": 2,
+      "fails_since_rule": 2,
+      "samples": [
+        {
+          "run_id": "20261108-100011-introduction-to-rag",
+          "attempt": 1,
+          "reason": "833 words (allowed 900-2600).",
+          "evidence": "833"
+        },
+        {
+          "run_id": "20261108-135518-introduction-to-rag",
+          "attempt": 1,
+          "crit": "fde6acc70f",
+          "reason": "821 words (allowed 900-2600).",
+          "evidence": "821"
+        }
+      ]
+    },
+    "ACRONYMS": {
+      "evaluations": 20,
+      "fails": 8,
+      "fails_since_rule": 1,
+      "samples": [
+        {
+          "run_id": "20261108-101430-introduction-to-rag",
+          "attempt": 1,
+          "reason": "Unexpanded acronyms: PM (never expanded or explained)",
+          "evidence": "PM (never expanded or explained)"
+        },
+        {
+          "run_id": "20261108-101430-introduction-to-rag",
+          "attempt": 2,
+          "reason": "Unexpanded acronyms: PM (never expanded or explained)",
+          "evidence": "PM (never expanded or explained)"
+        },
+        {
+          "run_id": "20261108-101430-introduction-to-rag",
+          "attempt": 3,
+          "reason": "Unexpanded acronyms: PM (never expanded or explained)",
+          "evidence": "PM (never expanded or explained)"
+        },
+        {
+          "run_id": "20261108-102840-introduction-to-rag",
+          "attempt": 1,
+          "reason": "Unexpanded acronyms: XYZ (never expanded or explained)",
+          "evidence": "XYZ (never expanded or explained)"
+        },
+        {
+          "run_id": "20261108-124136-introduction-to-rag",
+          "attempt": 1,
+          "reason": "Unexpanded acronyms: AI (full form 'artificial intelligence' not given near first use)",
+          "evidence": "AI (full form 'artificial intelligence' not given near first use)"
+        },
+        {
+          "run_id": "20261108-135518-introduction-to-rag",
+          "attempt": 1,
+          "crit": "644bf3387e",
+          "reason": "Unexpanded acronyms: AI (full form 'artificial intelligence' not given near first use)",
+          "evidence": "AI (full form 'artificial intelligence' not given near first use)"
+        }
+      ]
+    },
+    "JARGON": {
+      "evaluations": 20,
+      "fails": 14,
+      "fails_since_rule": 0,
+      "samples": [
+        {
+          "run_id": "20261108-124136-introduction-to-rag",
+          "attempt": 1,
+          "reason": "The terms \"model\" and \"vector\" are used without prior simple explanation.",
+          "evidence": "A large language model (LLM) is an AI model trained on a very large amount of text.; Store the embeddings in a vector database (a searchable store of embeddings)."
+        },
+        {
+          "run_id": "20261108-124136-introduction-to-rag",
+          "attempt": 2,
+          "reason": "The term \"context\" is used before being explained; its definition appears only in the glossary at the end.",
+          "evidence": "The LLM writes the answer from the question plus the retrieved context."
+        },
+        {
+          "run_id": "20261108-124136-introduction-to-rag",
+          "attempt": 3,
+          "reason": "Technical terms 'context window', 'top-k', and 'indexing' appear in the body without any explanation at or before first use.",
+          "evidence": "Only a limited amount of text fits in the prompt (the context window)."
+        },
+        {
+          "run_id": "20261108-133345-introduction-to-rag",
+          "attempt": 1,
+          "crit": "c00598eaf1",
+          "reason": "Technical terms prompt, training data, context, and weights are used without being explained in simple words at or before their first use.",
+          "evidence": "The retrieved text is added to the question in the prompt."
+        },
+        {
+          "run_id": "20261108-135518-introduction-to-rag",
+          "attempt": 1,
+          "crit": "c00598eaf1",
+          "reason": "Technical terms 'model', 'prompt', 'context', and 'weights' are used without simple explanations at first use.",
+          "evidence": "A large language model (LLM) is an AI model trained on a huge amount of text."
+        },
+        {
+          "run_id": "20261108-135518-introduction-to-rag",
+          "attempt": 2,
+          "crit": "c00598eaf1",
+          "reason": "The technical term 'context' (referring to the context window) is used before its definition is provided later in the same paragraph.",
+          "evidence": "The LLM can still hallucinate or ignore the context."
+        }
+      ]
+    },
+    "ANALOGY": {
+      "evaluations": 20,
+      "fails": 6,
+      "fails_since_rule": 0,
+      "samples": [
+        {
+          "run_id": "20261108-095251-introduction-to-rag",
+          "attempt": 1,
+          "reason": "No everyday Indian analogy (e.g., open‑book exam, kirana shop register, railway enquiry) is provided to explain the core idea of RAG and map its parts to retrieval and generation.",
+          "evidence": "MISSING: everyday analogy from life in India"
+        },
+        {
+          "run_id": "20261108-100011-introduction-to-rag",
+          "attempt": 1,
+          "reason": "The lesson contains no everyday analogy from life in India (e.g., open-book exam, kirana shop register, railway enquiry) that explains RAG and maps its parts to retrieval and generation.",
+          "evidence": "MISSING: any analogy mapping RAG to a familiar Indian scenario."
+        },
+        {
+          "run_id": "20261108-102840-introduction-to-rag",
+          "attempt": 1,
+          "reason": "No analogy such as an open‑book exam, library, kirana shop owner checking a register, or railway enquiry counter is provided, nor is any analogy mapped to the retrieval and generation steps of RAG.",
+          "evidence": "MISSING: everyday analogy from life in India mapping retrieval and generation."
+        },
+        {
+          "run_id": "20261108-124136-introduction-to-rag",
+          "attempt": 1,
+          "reason": "No everyday Indian analogy (e.g., open-book exam, kirana shop register) is provided to explain the core idea of RAG.",
+          "evidence": "MISSING: analogy"
+        },
+        {
+          "run_id": "20261108-133345-introduction-to-rag",
+          "attempt": 1,
+          "crit": "748e2be32c",
+          "reason": "No everyday Indian analogy (e.g., open-book exam, librarian) is provided to explain the core idea of RAG and map its parts to retrieval and generation.",
+          "evidence": "MISSING: analogy"
+        },
+        {
+          "run_id": "20261108-135518-introduction-to-rag",
+          "attempt": 1,
+          "crit": "748e2be32c",
+          "reason": "No everyday analogy from Indian life (e.g., open‑book exam, library, kirana shop, railway enquiry) is provided to explain RAG and map its parts.",
+          "evidence": "MISSING: analogy"
+        }
+      ]
+    },
+    "WORKED_EXAMPLE": {
+      "evaluations": 20,
+      "fails": 0,
+      "fails_since_rule": 0,
+      "samples": []
+    },
+    "ACCURACY": {
+      "evaluations": 20,
+      "fails": 0,
+      "fails_since_rule": 0,
+      "samples": []
+    },
+    "GROUNDED_DEFINITION": {
+      "evaluations": 20,
+      "fails": 0,
+      "fails_since_rule": 0,
+      "samples": []
+    },
+    "NO_OVERCLAIM": {
+      "evaluations": 20,
+      "fails": 0,
+      "fails_since_rule": 0,
+      "samples": []
+    },
+    "COVERAGE": {
+      "evaluations": 20,
+      "fails": 0,
+      "fails_since_rule": 0,
+      "samples": []
+    },
+    "QUIZ": {
+      "evaluations": 20,
+      "fails": 0,
+      "fails_since_rule": 0,
+      "samples": []
+    },
+    "DEFINED_BEFORE_USE": {
+      "evaluations": 15,
+      "fails": 7,
+      "fails_since_rule": 0,
+      "samples": [
+        {
+          "run_id": "20261108-101430-introduction-to-rag",
+          "attempt": 2,
+          "reason": "2 term(s) used before being explained.",
+          "evidence": "'vector' is used before its definition (\"...Store them in a **vector database** (a searchable index for vectors). A **vector** is a list of numbers tha...\") || 'chunk' is used before its definition (\"...what is retrieved. If the search returns wrong or outdated chunks, the answer can be wrong. The L"
+        },
+        {
+          "run_id": "20261108-101430-introduction-to-rag",
+          "attempt": 3,
+          "reason": "2 term(s) used before being explained.",
+          "evidence": "'embedding' is used before its definition (\"...chunks) and turning them into numbers that capture meaning (embeddings). - Why RAG helps and one key limit....\") || 'chunk' is used before its definition (\"...ledge is prepared by splitting documents into small pieces (chunks) and turning them into numb"
+        },
+        {
+          "run_id": "20261108-103851-introduction-to-rag-inject",
+          "attempt": 2,
+          "reason": "1 term(s) used before being explained.",
+          "evidence": "'vector' is used before its definition (\"...embeddings in a **vector database** (a searchable store of vectors). A **vector** is another word for embe...\")"
+        },
+        {
+          "run_id": "20261108-124136-introduction-to-rag",
+          "attempt": 1,
+          "reason": "1 term(s) used before being explained.",
+          "evidence": "'chunk' is used before its definition (\"...g facts.  **Limitation:** The answer is only as good as the chunks that are retrieved. If the search retur...\")"
+        },
+        {
+          "run_id": "20261108-133345-introduction-to-rag",
+          "attempt": 1,
+          "crit": "212b5c351e",
+          "reason": "4 term(s) used before being explained.",
+          "evidence": "'training data' is used but never defined (first use: \"...ree main limits.  First, it has a **knowledge cutoff**. Its training data stops at a fixed date. It does not know...\") || 'prompt' is used before its definition (\"...tronger. The retrieved text is added to the question in the prompt.  **Gener"
+        },
+        {
+          "run_id": "20261108-135518-introduction-to-rag",
+          "attempt": 1,
+          "crit": "212b5c351e",
+          "reason": "4 term(s) used before being explained.",
+          "evidence": "'semantic search' is used but never defined (first use: \"...tem finds the chunks whose meaning is most similar. This is semantic search. Usually the top few chunks are taken....\") || 'weights' is used but never defined (first use: \"...wer using the added pieces.   RAG does not change the model weigh"
+        }
+      ]
+    },
+    "GLOSSARY": {
+      "evaluations": 15,
+      "fails": 0,
+      "fails_since_rule": 0,
+      "samples": []
+    }
+  },
+  "guidelines": {
+    "FLOW": {
+      "text": "Maintain the fixed section order (Problem → What RAG is → Why it matters → How it works → Worked example → Recap) and, for every technical term, define it at its first use in the same sentence before any later use.",
+      "source": "coach",
+      "version": 2,
+      "updated": "2026-11-08T13:17:54",
+      "previous": "Define every technical term (e.g., 'prompt', 'retraining') in the sentence where it first appears, and do not use the term again until after that definition has been given."
+    },
+    "READABILITY": {
+      "text": "Write sentences averaging no more than 18 words; ensure at least 80% of words have two syllables or fewer; avoid jargon and passive voice.",
+      "source": "coach",
+      "version": 1,
+      "updated": "2026-11-08T09:59:10",
+      "previous": null
+    },
+    "ACRONYMS": {
+      "text": "When introducing an acronym for the first time, place its complete expanded form immediately before the acronym in parentheses, with no intervening words (e.g., 'artificial intelligence (AI)'); repeat this definition for each new acronym.",
+      "source": "coach",
+      "version": 3,
+      "updated": "2026-11-08T13:17:41",
+      "previous": "On the first occurrence of any acronym, write its full expanded form immediately followed by the acronym in parentheses, with no other words between them (e.g., 'large language model (LLM)')."
+    },
+    "ANALOGY": {
+      "text": "When describing RAG, insert one familiar Indian analogy—such as an open‑book exam, a library visit, a kirana shopkeeper consulting a register, or a railway enquiry counter—and clearly label which element corresponds to retrieval and which to generation.",
+      "source": "coach",
+      "version": 3,
+      "crit": "748e2be32c",
+      "updated": "2026-11-08T14:08:15",
+      "previous": "Insert one Indian everyday analogy (open‑book exam, kirana shop register, railway enquiry counter, or library) describing RAG, and clearly label the analogy component that represents retrieval and the component that represents generation."
+    },
+    "DEFINED_BEFORE_USE": {
+      "text": "On first use of any core technical term—training data, prompt, semantic search, weights, knowledge cutoff—immediately follow it with a concise definition in parentheses or a dash.",
+      "source": "coach",
+      "version": 3,
+      "crit": "212b5c351e",
+      "updated": "2026-11-08T14:08:15",
+      "previous": "At the first mention of each core term—embedding model, retraining, vector, chunk, embedding—insert a brief definition in parentheses right after the term (or as an appositive set off by commas/dashes), e.g., 'vector (a list of numbers representing data)'."
+    },
+    "JARGON": {
+      "text": "Define each listed technical term (model, LLM, prompt, token, training data, knowledge cutoff, hallucination, retrieval, chunk, embedding, vector, vector database, semantic search, context, fine‑tuning, weights) in simple words at its first use.",
+      "source": "coach",
+      "version": 1,
+      "crit": "c00598eaf1",
+      "updated": "2026-11-08T14:08:15",
+      "previous": null
+    }
+  },
+  "human_feedback": [],
+  "learned_avoid_words": []
+}

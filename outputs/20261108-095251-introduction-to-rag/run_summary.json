@@ -1,0 +1,93 @@
+{
+  "run_id": "20261108-095251-introduction-to-rag",
+  "topic": "Introduction to RAG",
+  "status": "NEEDS_HUMAN_REVIEW",
+  "final_attempt": 3,
+  "attempts": 3,
+  "grounding": "verified (rag_reference.md)",
+  "learning": [
+    "New rule v1 for FLOW: Define every technical term (e.g., 'prompt', 'retraining') in the sentence where it first appears, and do not use the term again until after that definition has been given.",
+    "New rule v1 for JARGON: For each term in the list (model, LLM, prompt, token, training data, knowledge cutoff, hallucination, retrieval, chunk, embedding, vector, vector database, semantic search, context, fine‑tuning, weights), give a simple definition at or before its first appearance in the lesson body.",
+    "New rule v1 for READABILITY: Write sentences averaging no more than 18 words; ensure at least 80% of words have two syllables or fewer; avoid jargon and passive voice."
+  ],
+  "llm_calls": [
+    {
+      "role": "planner",
+      "model": "nemotron-3-ultra",
+      "seconds": 72.0,
+      "tokens": 5816
+    },
+    {
+      "role": "generator",
+      "model": "nemotron-3-ultra",
+      "seconds": 28.2,
+      "tokens": 7353
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 57.0,
+      "tokens": 10132
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 10.5,
+      "tokens": 6226
+    },
+    {
+      "role": "reviser",
+      "model": "nemotron-3-ultra",
+      "seconds": 68.0,
+      "tokens": 7731
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 17.3,
+      "tokens": 7583
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 15.5,
+      "tokens": 6954
+    },
+    {
+      "role": "reviser",
+      "model": "nemotron-3-ultra",
+      "seconds": 60.0,
+      "tokens": 6818
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 20.1,
+      "tokens": 8206
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 16.9,
+      "tokens": 7628
+    },
+    {
+      "role": "coach",
+      "model": "nemotron-3-super",
+      "seconds": 5.3,
+      "tokens": 705
+    },
+    {
+      "role": "coach",
+      "model": "nemotron-3-super",
+      "seconds": 5.1,
+      "tokens": 952
+    },
+    {
+      "role": "coach",
+      "model": "nemotron-3-super",
+      "seconds": 3.0,
+      "tokens": 666
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "learning_goals": [
+    "Explain what a large language model (LLM) is and its main limits",
+    "Describe what RAG stands for and the meaning of each word",
+    "List the three steps that happen when a question is answered with RAG",
+    "Identify one benefit and one limitation of using RAG"
+  ],
+  "terms_in_order": [
+    "large language model (LLM)",
+    "token",
+    "training data",
+    "knowledge cutoff",
+    "hallucination",
+    "retrieval",
+    "augmented",
+    "generation",
+    "RAG",
+    "embedding model",
+    "embedding",
+    "vector",
+    "chunk",
+    "vector database",
+    "semantic search",
+    "prompt",
+    "context",
+    "fine‑tuning",
+    "weights",
+    "retraining"
+  ],
+  "analogy": {
+    "story": "Imagine a student sitting for an open‑book exam in a Hindi‑medium school. The student first looks through the textbook to find the page that has the needed formula, then writes the answer using that page.",
+    "mapping": "Looking for the right page = retrieval (finding the relevant chunk). Writing the answer from that page = generation (the LLM produces the final answer)."
+  },
+  "worked_example": {
+    "setting": "A first‑year college student in Bhopal uses a chatbot on the college website to ask about the new merit‑scholarship rules.",
+    "question": "What is the income limit for the merit scholarship this year?",
+    "documents": [
+      "Scholarship Notice 2024: Family annual income must not exceed ₹2,50,000 for merit scholarship eligibility.",
+      "Hostel Fee Circular 2023: Hostel fees are ₹12,000 per semester for all students.",
+      "Exam Schedule 2024: Semester exams start on 15 November 2024."
+    ],
+    "retrieved": "Scholarship Notice 2024: Family annual income must not exceed ₹2,50,000 for merit scholarship eligibility.",
+    "answer_without_rag": "The income limit is ₹3,00,000 per year. (This is made up; the model guessed.)",
+    "answer_with_rag": "According to the 2024 scholarship notice, the family annual income must not exceed ₹2,50,000."
+  },
+  "sections": [
+    {
+      "heading": "## What You Will Learn",
+      "goal": "Give the learner a clear list of the lesson outcomes.",
+      "points": [
+        "Understand what a large language model (LLM) is and its limits (F1‑F4).",
+        "Learn the full form of RAG and the meaning of each word (F5).",
+        "See the three question‑time steps: retrieve, augment, generate (F8).",
+        "Know one benefit and one limitation of RAG (F11‑F12)."
+      ]
+    },
+    {
+      "heading": "## Before We Start: Some Basic Ideas",
+      "goal": "Introduce AI, LLM, token, training data, knowledge cutoff, hallucination.",
+      "points": [
+        "A large language model (LLM) is an AI model trained on a very large amount of text (F1).",
+        "It predicts the next token (a word or part of a word) to generate text (F1).",
+        "Its knowledge comes from training data that stops at a fixed date called the knowledge cutoff (F2).",
+        "It does not know private or organisation‑specific information it never saw (F3).",
+        "It can produce confident but wrong answers; this is called hallucination (F4)."
+      ]
+    },
+    {
+      "heading": "## What Is RAG?",
+      "goal": "Define RAG and explain each word.",
+      "points": [
+        "RAG stands for Retrieval‑Augmented Generation (F5).",
+        "Retrieval = finding the relevant pieces of information from an outside source (F5).",
+        "Augmented = adding those pieces to the user question inside the prompt (F5).",
+        "Generation = the LLM writes the answer using the question plus the added information (F5).",
+        "The term was introduced in a 2020 research paper by Patrick Lewis and colleagues (F6)."
+      ]
+    },
+    {
+      "heading": "## Why Does RAG Matter?",
+      "goal": "Show benefits and why we use RAG instead of retraining.",
+      "points": [
+        "Answers can use up‑to‑date and private information (F11).",
+        "Fewer made‑up answers (hallucinations are reduced, not removed) (F11).",
+        "Answers can show their sources (F11).",
+        "Cheaper and faster than retraining the model (F11).",
+        "Knowledge is easy to update by changing the documents, not the model (F9, F10).",
+        "RAG does not change the model weights; fine‑tuning does (F9, F10)."
+      ]
+    },
+    {
+      "heading": "## How Does RAG Work?",
+      "goal": "Explain preparation (indexing) and the three question‑time steps.",
+      "points": [
+        "Preparation (indexing): collect documents, split them into small pieces called chunks (F7).",
+        "Each chunk is turned into an embedding (a list of numbers that captures meaning) using an embedding model (F7).",
+        "Embeddings are stored in a vector database so they can be searched by meaning (F7).",
+        "Question‑time step 1 – Retrieve: the user question is also turned into an embedding; the system finds the most similar chunks using semantic search (F8).",
+        "Question‑time step 2 – Augment: the retrieved chunks are placed into the prompt together with the question and an instruction such as \"answer using only this information\" (F8).",
+        "Question‑time step 3 – Generate: the LLM writes the answer from the question plus the retrieved context and can cite the sources (F8).",
+        "Only the top few (top‑k) chunks are used; the LLM does not read every document (F8, M5)."
+      ]
+    },
+    {
+      "heading": "## Example: College Scholarship Chatbot",
+      "goal": "Walk through the worked example with Indian context.",
+      "points": [
+        "Setting: a student in Bhopal asks the college chatbot about the merit‑scholarship income limit.",
+        "The knowledge base holds three short documents (see worked_example.documents).",
+        "Retrieval finds the scholarship notice chunk (worked_example.retrieved).",
+        "Without RAG the LLM guesses ₹3,00,000 (worked_example.answer_without_rag).",
+        "With RAG the answer quotes the correct limit ₹2,50,000 (worked_example.answer_with_rag)."
+      ]
+    },
+    {
+      "heading": "## Key Words to Remember",
+      "goal": "List the most important terms with one‑sentence definitions.",
+      "points": [
+        "large language model (LLM) – an AI model trained on huge text that predicts the next token.",
+        "token – a word or part of a word that the model reads or writes.",
+        "training data – the text collection used to teach the model.",
+        "knowledge cutoff – the date after which the model knows nothing.",
+        "hallucination – a confident but wrong answer made up by the model.",
+        "retrieval – finding the most relevant document pieces for a question.",
+        "augmented – adding those pieces to the prompt.",
+        "generation – the model writing the final answer.",
+        "embedding – a list of numbers that represents the meaning of text.",
+        "vector database – a searchable store of embeddings.",
+        "semantic search – searching by meaning, not just keywords.",
+        "prompt – the full text sent to the model, including question and context.",
+        "context – the retrieved chunks placed in the prompt.",
+        "fine‑tuning – extra training that changes the model weights.",
+        "weights – the internal numbers the model learns during training.",
+        "retraining – teaching the model again from scratch or on new data."
+      ]
+    },
+    {
+      "heading": "## Quick Check",
+      "goal": "Five simple questions to test understanding.",
+      "points": [
+        "What does RAG stand for? – Retrieval‑Augmented Generation.",
+        "Which step happens first when a question arrives: retrieve, augment, or generate? – Retrieve.",
+        "Does RAG change the model’s weights? – No, the weights stay the same.",
+        "What is one benefit of RAG? – It lets the model use fresh or private documents.",
+        "What is one limitation of RAG? – The answer is only as good as the chunks that are retrieved."
+      ]
+    },
+    {
+      "heading": "## Summary",
+      "goal": "Recap the whole lesson in a few sentences.",
+      "points": [
+        "A large language model (LLM) generates text but has a knowledge cutoff, no private data, and can hallucinate.",
+        "RAG (Retrieval‑Augmented Generation) adds a retrieval step before generation so the model answers from up‑to‑date or private documents.",
+        "Documents are split into chunks, turned into embeddings, and stored in a vector database.",
+        "At question time the system retrieves the best chunks, augments the prompt, and the LLM generates a grounded answer.",
+        "RAG is cheaper and faster than retraining, but its quality depends on the retrieved chunks."
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What is the full form of RAG?",
+      "a": "Retrieval‑Augmented Generation"
+    },
+    {
+      "q": "In RAG, which step comes first when a user asks a question?",
+      "a": "Retrieve"
+    },
+    {
+      "q": "Does RAG modify the model’s internal weights?",
+      "a": "No, RAG does not change the model weights."
+    },
+    {
+      "q": "Give one advantage of using RAG over fine‑tuning.",
+      "a": "RAG is cheaper and faster and lets you update knowledge by changing documents."
+    },
+    {
+      "q": "What is a key limitation of RAG?",
+      "a": "The answer quality depends on the relevance and correctness of the retrieved chunks."
+    }
+  ]
+}

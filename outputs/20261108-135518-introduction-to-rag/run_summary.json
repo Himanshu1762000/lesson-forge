@@ -1,0 +1,120 @@
+{
+  "run_id": "20261108-135518-introduction-to-rag",
+  "topic": "Introduction to RAG",
+  "status": "SHIPPED",
+  "final_attempt": 3,
+  "attempts": 3,
+  "grounding": "verified (rag_reference.md)",
+  "learning": [
+    "Sharpened rule v3 for ANALOGY: When describing RAG, insert one familiar Indian analogy—such as an open‑book exam, a library visit, a kirana shopkeeper consulting a register, or a railway enquiry counter—and clearly label which element corresponds to retrieval and which to generation.",
+    "Sharpened rule v3 for DEFINED_BEFORE_USE: On first use of any core technical term—training data, prompt, semantic search, weights, knowledge cutoff—immediately follow it with a concise definition in parentheses or a dash.",
+    "New rule v1 for JARGON: Define each listed technical term (model, LLM, prompt, token, training data, knowledge cutoff, hallucination, retrieval, chunk, embedding, vector, vector database, semantic search, context, fine‑tuning, weights) in simple words at its first use."
+  ],
+  "llm_calls": [
+    {
+      "role": "planner",
+      "model": "nemotron-3-ultra",
+      "seconds": 87.6,
+      "tokens": 5731
+    },
+    {
+      "role": "generator",
+      "model": "nemotron-3-ultra",
+      "seconds": 26.3,
+      "tokens": 6363
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 15.2,
+      "tokens": 7066
+    },
+    {
+      "role": "judge",
+      "json_error": "unparseable JSON: Expecting value: line 1 column 150 (char 149)"
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 28.1,
+      "tokens": 9877
+    },
+    {
+      "role": "judge",
+      "json_error": "unparseable JSON: Expecting ',' delimiter: line 1 column 386 (char 385)"
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 28.5,
+      "tokens": 9714
+    },
+    {
+      "role": "judge",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "seconds": 108.3,
+      "tokens": 6836
+    },
+    {
+      "role": "reviser",
+      "model": "nemotron-3-ultra",
+      "seconds": 91.0,
+      "tokens": 7796
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 51.6,
+      "tokens": 7711
+    },
+    {
+      "role": "judge",
+      "model": "combo/rig",
+      "seconds": 180.0,
+      "tokens": null,
+      "error": "Request timed out."
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 24.5,
+      "tokens": 8538
+    },
+    {
+      "role": "reviser",
+      "model": "nemotron-3-ultra",
+      "seconds": 60.9,
+      "tokens": 6437
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 56.8,
+      "tokens": 8887
+    },
+    {
+      "role": "judge",
+      "model": "@cf/openai/gpt-oss-120b",
+      "seconds": 168.5,
+      "tokens": 4916
+    },
+    {
+      "role": "coach",
+      "model": "nemotron-3-super",
+      "seconds": 3.8,
+      "tokens": 932
+    },
+    {
+      "role": "coach",
+      "model": "nemotron-3-super",
+      "seconds": 4.8,
+      "tokens": 972
+    },
+    {
+      "role": "coach",
+      "model": "nemotron-3-super",
+      "seconds": 3.9,
+      "tokens": 978
+    }
+  ]
+}

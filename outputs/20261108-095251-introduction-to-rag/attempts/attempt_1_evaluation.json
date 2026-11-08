@@ -1,0 +1,193 @@
+{
+  "attempt": 1,
+  "source": "generator",
+  "changelog": [
+    "First draft written from the plan"
+  ],
+  "passed": false,
+  "n_passed": 11,
+  "n_total": 16,
+  "failed": [
+    "FLOW",
+    "READABILITY",
+    "ACRONYMS",
+    "JARGON",
+    "ANALOGY"
+  ],
+  "results": [
+    {
+      "id": "STRUCTURE",
+      "dimension": "coherent teaching flow",
+      "type": "code",
+      "passed": true,
+      "reason": "All sections present in order.",
+      "evidence": "What You Will Learn | Before We Start: Some Basic Ideas | What Is RAG? | Why Does RAG Matter? | How Does RAG Work? | Example: College Scholarship Chatbot | Key Words to Remember | Quick Check | Summary",
+      "fix": ""
+    },
+    {
+      "id": "FLOW",
+      "dimension": "coherent teaching flow",
+      "type": "llm",
+      "passed": false,
+      "reason": "The term \"prompt\" is used before being explained, breaking the flow where ideas must be introduced before use.",
+      "evidence": "The retrieved text is added to the user question in the prompt.",
+      "fix": "Introduce and explain what a prompt is before its first use, e.g., in the \"Before We Start\" section.",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "0/1 pass"
+    },
+    {
+      "id": "SENTENCE_LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Average 8.2 words/sentence (max 16); 0 sentence(s) over 30 words.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "READABILITY",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": false,
+      "reason": "Flesch Reading Ease 58.1 (need >= 60).",
+      "evidence": "58.1",
+      "fix": "Use shorter sentences and shorter, more common words."
+    },
+    {
+      "id": "AVOID_WORDS",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "No difficult words or idioms found.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "PLAIN_LANGUAGE",
+      "dimension": "beginner-friendly language",
+      "type": "llm",
+      "passed": true,
+      "reason": "Uses direct address, common words, active voice, and no idioms or culture‑specific references that would hinder understanding.",
+      "evidence": "In this lesson you will learn:",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "1014 words (allowed 900-2600).",
+      "evidence": "1014",
+      "fix": ""
+    },
+    {
+      "id": "ACRONYMS",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": false,
+      "reason": "Unexpanded acronyms: LLM (full form 'large language model' not given near first use); NOT (never expanded or explained); LPA (never expanded or explained); TCS (never expanded or explained)",
+      "evidence": "LLM (full form 'large language model' not given near first use); NOT (never expanded or explained); LPA (never expanded or explained); TCS (never expanded or explained)",
+      "fix": "Write each acronym in full at its first use, e.g. 'LLM (Large Language Model)'."
+    },
+    {
+      "id": "JARGON",
+      "dimension": "clear, no unexplained jargon",
+      "type": "llm",
+      "passed": false,
+      "reason": "The technical term \"prompt\" appears without prior explanation; a definition only later or in a glossary does not satisfy the rule.",
+      "evidence": "The retrieved text is added to the user question in the prompt.",
+      "fix": "Define \"prompt\" at its first use, e.g., \"Prompt = the instructions and context given to the LLM.\"",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "0/1 pass"
+    },
+    {
+      "id": "ANALOGY",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": false,
+      "reason": "No everyday Indian analogy (e.g., open‑book exam, kirana shop register, railway enquiry) is provided to explain the core idea of RAG and map its parts to retrieval and generation.",
+      "evidence": "MISSING: everyday analogy from life in India",
+      "fix": "Add an analogy such as an open‑book exam: retrieval = finding the right page, generation = writing the answer using that page, and explicitly map each step.",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "0/1 pass"
+    },
+    {
+      "id": "WORKED_EXAMPLE",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson provides a concrete example with a specific user question, shows the retrieved text, the prompt construction, and the final answer, clearly displaying retrieve, augment, and generate steps.",
+      "evidence": "Retrieve: Semantic search finds Doc 1 snippet with scholarship dates.\nAugment: The snippet is added to the prompt with instruction.\nGenerate: LLM answers.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ACCURACY",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson contains no sentences that contradict the reference sheet and none of the misconceptions M1‑M7 appear.",
+      "evidence": "RAG does NOT change model weights. To update knowledge, update documents, not the model.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "GROUNDED_DEFINITION",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson gives the correct full form, explains each word correctly, and describes the prepare → retrieve → augment → generate order as in the reference facts.",
+      "evidence": "RAG stands for Retrieval-Augmented Generation. Retrieval = Finding and fetching relevant pieces of information from an outside source. Augmented = Added to / made stronger. Generation = The LLM writes (generates) the answer.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "NO_OVERCLAIM",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson does not overstate RAG’s capabilities and clearly states a real limitation (answer quality depends on retrieval quality).",
+      "evidence": "It reduces hallucinations (fewer made-up answers) — but does not remove them completely.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "COVERAGE",
+      "dimension": "covers the key points",
+      "type": "llm",
+      "passed": true,
+      "reason": "Every must‑cover point K1 through K7 is taught in the lesson.",
+      "evidence": "LLM = predicts next token; limits: cutoff date, no private data, hallucination. RAG = Retrieval-Augmented Generation. Before answering, system retrieves relevant chunks, adds them to prompt, then LLM generates. Preparation: documents → chunks → embeddings → vector database (done once). Question-time: Retrieve (semantic search) → Augment (add to prompt) → Generate (answer with citations). Benefits: fresh/private data, fewer hallucinations, sources, no retraining. Limitation: answer only as good as retrieved chunks. RAG ≠ fine‑tuning.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "QUIZ",
+      "dimension": "covers the key points",
+      "type": "code",
+      "passed": true,
+      "reason": "4 question(s), 10 answer marker(s); need >= 3 with answers.",
+      "evidence": "1. What are the three limits of a plain LLM? | 3. What is the correct order of steps when a user asks a question in RAG? | 4. Does RAG retrain or change the LLM model? | 5. If the retrieval step returns a wrong or outdated chunk, what happens to the answer?",
+      "fix": ""
+    }
+  ],
+  "seconds": 67.6,
+  "fixed": [],
+  "broken": []
+}

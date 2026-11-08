@@ -1,0 +1,182 @@
+{
+  "learning_goals": [
+    "Explain what an LLM is and its limits",
+    "Define RAG and each word in the name",
+    "Describe the three steps retrieve augment generate",
+    "List benefits and one limitation of RAG"
+  ],
+  "terms_in_order": [
+    "large language model (LLM)",
+    "token",
+    "knowledge cutoff",
+    "hallucination",
+    "retrieval-augmented generation (RAG)",
+    "retrieval",
+    "augment",
+    "generation",
+    "document",
+    "chunk",
+    "embedding model",
+    "embedding",
+    "vector",
+    "vector database",
+    "fine-tuning",
+    "retraining",
+    "context window"
+  ],
+  "analogy": {
+    "story": "A student sits for an open‑book exam. The student first looks up the right page in the book, then writes the answer using that page.",
+    "mapping": "Looking up the page is retrieval. Writing the answer from the page is generation."
+  },
+  "worked_example": {
+    "setting": "A college student in Delhi uses a chatbot on the college website to ask about a government scholarship.",
+    "question": "What is the last date to apply for the PM Scholarship 2024?",
+    "documents": [
+      "PM Scholarship 2024: Application opens 1 Jan 2024, closes 31 March 2024.",
+      "Eligibility: Indian citizens, family income below 8 lakh.",
+      "Contact: email scholarships@gov.in"
+    ],
+    "retrieved": "PM Scholarship 2024: Application opens 1 Jan 2024, closes 31 March 2024.",
+    "answer_without_rag": "The last date is 30 June 2024.",
+    "answer_with_rag": "The last date to apply is 31 March 2024, according to the official scheme document."
+  },
+  "sections": [
+    {
+      "heading": "What You Will Learn",
+      "goal": "Show the main topics of the lesson",
+      "points": [
+        "You will learn what an LLM is (F1)",
+        "You will learn LLM limits such as knowledge cutoff and no private data (F2, F3)",
+        "You will learn that LLMs can hallucinate (F4)",
+        "You will learn what RAG stands for (F5)",
+        "You will learn the three steps retrieve augment generate (F8)",
+        "You will learn benefits like fresh data and sources (F11)",
+        "You will learn one limitation about retrieval quality (F12)"
+      ]
+    },
+    {
+      "heading": "Before We Start: Some Basic Ideas",
+      "goal": "Explain AI, LLM, and LLM limits in simple words",
+      "points": [
+        "A large language model (LLM) is an AI model trained on huge text (F1)",
+        "It predicts the next token (a word or part of a word) (F1)",
+        "Its knowledge stops at a fixed date called knowledge cutoff (F2)",
+        "It does not know private or organisation data (F3)",
+        "It can make up answers that sound confident, called hallucination (F4)"
+      ]
+    },
+    {
+      "heading": "What Is RAG?",
+      "goal": "Define RAG and each word in the name",
+      "points": [
+        "RAG stands for retrieval-augmented generation (F5)",
+        "Retrieval means finding relevant pieces of information (F5)",
+        "Augmented means adding those pieces to the prompt (F5)",
+        "Generation means the LLM writes the answer using the added pieces (F5)",
+        "RAG does not change the model weights (F9)"
+      ]
+    },
+    {
+      "heading": "Why Does RAG Matter?",
+      "goal": "List the main benefits of using RAG",
+      "points": [
+        "Answers can use up‑to‑date information (F11)",
+        "Answers can use private or organisation data (F11)",
+        "Fewer made‑up answers, though not zero (F11)",
+        "Answers can show sources (F11)",
+        "Cheaper and faster than retraining the model (F11)",
+        "Knowledge is easy to update by changing documents (F11)"
+      ]
+    },
+    {
+      "heading": "How Does RAG Work?",
+      "goal": "Explain preparation and the three question‑time steps",
+      "points": [
+        "Preparation: collect documents, split into chunks (small pieces) (F7)",
+        "Turn each chunk into an embedding (a list of numbers that captures meaning) using an embedding model (F7)",
+        "Store embeddings in a vector database (a searchable index of vectors) (F7)",
+        "Question time step 1 retrieve: turn the user question into an embedding and find the most similar chunks (F8)",
+        "Step 2 augment: place the retrieved chunks into the prompt with the question (F8)",
+        "Step 3 generate: the LLM writes the answer from the prompt (F8)",
+        "The LLM weights stay the same, unlike fine‑tuning which changes weights (F9, F10)",
+        "Only a limited amount of text fits in the context window (F12)"
+      ]
+    },
+    {
+      "heading": "Example: College Scholarship Query",
+      "goal": "Show a concrete Indian scenario with and without RAG",
+      "points": [
+        "Setting: a Delhi student asks a college chatbot about a scholarship (worked_example)",
+        "Question: last date to apply for PM Scholarship 2024 (worked_example)",
+        "Documents in the knowledge base (worked_example)",
+        "Retrieved snippet gives the correct date (worked_example)",
+        "Plain LLM hallucinates a wrong date (worked_example)",
+        "RAG answer uses the retrieved snippet and cites the source (worked_example)"
+      ]
+    },
+    {
+      "heading": "Key Words to Remember",
+      "goal": "List important terms with one‑line meanings",
+      "points": [
+        "LLM – large language model, predicts next token (F1)",
+        "Token – a word or part of a word (F1)",
+        "Knowledge cutoff – date after which the model knows nothing (F2)",
+        "Hallucination – confident but wrong answer (F4)",
+        "RAG – retrieval-augmented generation (F5)",
+        "Retrieval – finding relevant chunks (F5)",
+        "Augment – adding chunks to the prompt (F5)",
+        "Generation – LLM writes answer (F5)",
+        "Chunk – small piece of a document (F7)",
+        "Embedding – list of numbers representing meaning (F7)",
+        "Vector database – index that stores embeddings for fast search (F7)",
+        "Fine‑tuning – extra training that changes model weights (F10)",
+        "Context window – max text the model can see at once (F12)"
+      ]
+    },
+    {
+      "heading": "Quick Check",
+      "goal": "Test understanding with a few questions",
+      "points": [
+        "What does RAG stand for?",
+        "Which step comes first: retrieve or generate?",
+        "Does RAG change the model weights?",
+        "Name one benefit of RAG.",
+        "What happens if the retrieved chunk is wrong?"
+      ]
+    },
+    {
+      "heading": "Summary",
+      "goal": "Recap the whole lesson in a few lines",
+      "points": [
+        "An LLM predicts tokens but has a knowledge cutoff and can hallucinate (F1‑F4)",
+        "RAG adds a retrieval step before generation so the model uses fresh or private data (F5, F8)",
+        "Preparation builds a vector database of chunk embeddings (F7)",
+        "At query time the system retrieves, augments, then generates (F8)",
+        "RAG does not retrain the model; it is cheaper and easier to update (F9, F11)",
+        "The answer quality depends on the quality of retrieved chunks (F12)"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does RAG stand for?",
+      "a": "Retrieval-Augmented Generation"
+    },
+    {
+      "q": "Which step comes first in RAG: retrieve or generate?",
+      "a": "Retrieve"
+    },
+    {
+      "q": "Does RAG change the model weights?",
+      "a": "No, RAG does not change the model weights."
+    },
+    {
+      "q": "Name one benefit of RAG.",
+      "a": "It lets the model use up‑to‑date or private information."
+    },
+    {
+      "q": "What happens if the retrieved chunk is wrong?",
+      "a": "The answer can be wrong because the model relies on that chunk."
+    }
+  ]
+}

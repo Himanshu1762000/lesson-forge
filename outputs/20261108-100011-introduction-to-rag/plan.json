@@ -1,0 +1,169 @@
+{
+  "learning_goals": [
+    "Explain what an LLM is and its limits",
+    "Describe RAG and its three steps",
+    "Show how RAG uses documents to answer a question",
+    "Identify one limitation of RAG"
+  ],
+  "terms_in_order": [
+    "model",
+    "LLM",
+    "training data",
+    "knowledge cutoff",
+    "hallucination",
+    "prompt",
+    "token",
+    "retrieval",
+    "chunk",
+    "embedding",
+    "vector",
+    "vector database",
+    "semantic search",
+    "context",
+    "augment",
+    "generate",
+    "fine‑tuning",
+    "weights"
+  ],
+  "analogy": {
+    "story": "A student sits for an open‑book exam. The student can read the textbook before writing the answer.",
+    "mapping": "Student = LLM. Textbook = knowledge base. Finding the right page = retrieval. Writing the answer using that page = augment and generate."
+  },
+  "worked_example": {
+    "setting": "Riya, a 12th‑grade graduate from Bhopal, wants to know the fee for B.Sc. Computer Science at her college.",
+    "question": "What is the annual fee for B.Sc. Computer Science at Government College Bhopal?",
+    "documents": [
+      "Government College Bhopal prospectus 2024: B.Sc. Computer Science fee ₹12,000 per year.",
+      "Government College Bhopal prospectus 2023: B.Sc. Computer Science fee ₹10,000 per year."
+    ],
+    "retrieved": "Government College Bhopal prospectus 2024: B.Sc. Computer Science fee ₹12,000 per year.",
+    "answer_without_rag": "The fee is around ₹15,000 per year.",
+    "answer_with_rag": "According to the 2024 prospectus, the fee is ₹12,000 per year."
+  },
+  "sections": [
+    {
+      "heading": "## What You Will Learn",
+      "goal": "Tell the learner the goals of this lesson.",
+      "points": [
+        "You will learn what an LLM is and its limits (K1).",
+        "You will learn the full form of RAG and what each word means (K2).",
+        "You will learn the three steps: retrieve, augment, generate (K3).",
+        "You will learn how documents are prepared for search (K4).",
+        "You will learn why RAG helps with fresh and private data (K5).",
+        "You will learn one key limitation of RAG (K6).",
+        "You will learn that RAG does not change the model (K7)."
+      ]
+    },
+    {
+      "heading": "## Before We Start: Some Basic Ideas",
+      "goal": "Explain AI, LLM, training data, knowledge cutoff, and hallucination.",
+      "points": [
+        "A model is a computer program that learns patterns from data (F1).",
+        "An LLM is a large language model trained on huge text (F1).",
+        "Training data is the text used to teach the model (F1).",
+        "Knowledge cutoff is the date after which the model knows nothing (F2).",
+        "The model has no private or organisation data it never saw (F3).",
+        "Hallucination is when the model makes up wrong but confident answers (F4)."
+      ]
+    },
+    {
+      "heading": "## What Is RAG?",
+      "goal": "Define RAG and each word in the name.",
+      "points": [
+        "RAG stands for Retrieval‑Augmented Generation (F5).",
+        "Retrieval means finding relevant pieces of information (F5).",
+        "Augmented means adding those pieces to the question (F5).",
+        "Generation means the LLM writes the answer using the added text (F5).",
+        "The idea was first published in a 2020 paper by Patrick Lewis and team (F6)."
+      ]
+    },
+    {
+      "heading": "## Why Does RAG Matter?",
+      "goal": "List the main benefits of using RAG.",
+      "points": [
+        "Answers can use up‑to‑date and private information (F11).",
+        "Fewer made‑up answers, though not zero (F11).",
+        "Answers can show sources so you can check them (F11).",
+        "No need to retrain the model; just update the documents (F9, F10).",
+        "Cheaper and faster than fine‑tuning the model (F10, F11)."
+      ]
+    },
+    {
+      "heading": "## How Does RAG Work?",
+      "goal": "Explain preparation and the three question‑time steps.",
+      "points": [
+        "Preparation: collect documents, split into chunks, turn each chunk into an embedding (a list of numbers that captures meaning) using an embedding model, store in a vector database (F7).",
+        "A vector is a list of numbers; a vector database lets you search by meaning (F7).",
+        "Semantic search finds chunks whose meaning is closest to the question (F8).",
+        "Step 1 Retrieve: turn the question into an embedding, find top‑k similar chunks (F8).",
+        "Step 2 Augment: put the retrieved chunks into the prompt with the question and an instruction like \"answer using only this information\" (F8).",
+        "Step 3 Generate: the LLM writes the answer from the question plus the retrieved context (F8).",
+        "The model weights stay the same; only the documents change (F9)."
+      ]
+    },
+    {
+      "heading": "## Example: College Fee Query",
+      "goal": "Show a concrete Indian example of RAG in action.",
+      "points": [
+        "Riya asks the fee question (worked_example.question).",
+        "The system searches the college prospectus stored in the vector database (worked_example.documents).",
+        "It retrieves the 2024 fee snippet (worked_example.retrieved).",
+        "A plain LLM might guess ₹15,000 (worked_example.answer_without_rag) – a hallucination (F4).",
+        "With RAG the answer cites the 2024 prospectus: ₹12,000 (worked_example.answer_with_rag)."
+      ]
+    },
+    {
+      "heading": "## Key Words to Remember",
+      "goal": "Recap the technical terms introduced in this lesson.",
+      "points": [
+        "model, LLM, training data, knowledge cutoff, hallucination, prompt, token, retrieval, chunk, embedding, vector, vector database, semantic search, context, augment, generate, fine‑tuning, weights"
+      ]
+    },
+    {
+      "heading": "## Quick Check",
+      "goal": "Test understanding with a few questions.",
+      "points": [
+        "What does RAG stand for? – Retrieval‑Augmented Generation.",
+        "Which step comes first: retrieve or generate? – Retrieve.",
+        "Does RAG change the model weights? – No, the weights stay the same.",
+        "What is a chunk? – A small piece of a document used for search.",
+        "What is one limitation of RAG? – The answer depends on the quality of retrieved chunks."
+      ]
+    },
+    {
+      "heading": "## Summary",
+      "goal": "Recap the main ideas of the lesson.",
+      "points": [
+        "An LLM learns from training data and has a knowledge cutoff (F1, F2).",
+        "It cannot see private data and may hallucinate (F3, F4).",
+        "RAG adds a retrieval step before generation so the model uses fresh or private documents (F5, F8).",
+        "Documents are split into chunks, turned into embeddings, and stored in a vector database (F7).",
+        "At query time the system retrieves, augments the prompt, then generates (F8).",
+        "RAG does not retrain the model; updating knowledge means updating documents (F9, F10).",
+        "Benefits: up‑to‑date answers, sources, lower cost; limitation: answer quality depends on retrieval (F11, F12)."
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does RAG stand for?",
+      "a": "Retrieval‑Augmented Generation"
+    },
+    {
+      "q": "Which step happens first in RAG: retrieve or generate?",
+      "a": "Retrieve"
+    },
+    {
+      "q": "Does RAG change the model weights?",
+      "a": "No, the model weights stay the same."
+    },
+    {
+      "q": "What is a chunk?",
+      "a": "A small piece of a document used for search."
+    },
+    {
+      "q": "Name one limitation of RAG.",
+      "a": "The answer depends on the quality of the retrieved chunks."
+    }
+  ]
+}

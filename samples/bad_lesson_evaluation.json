@@ -1,0 +1,208 @@
+{
+  "passed": false,
+  "n_passed": 8,
+  "n_total": 18,
+  "failed": [
+    "FLOW",
+    "SENTENCE_LENGTH",
+    "AVOID_WORDS",
+    "PLAIN_LANGUAGE",
+    "ACRONYMS",
+    "ACCURACY",
+    "GROUNDED_DEFINITION",
+    "NO_OVERCLAIM",
+    "COVERAGE",
+    "QUIZ"
+  ],
+  "results": [
+    {
+      "id": "STRUCTURE",
+      "dimension": "coherent teaching flow",
+      "type": "code",
+      "passed": true,
+      "reason": "All sections present in order.",
+      "evidence": "What You Will Learn | Before We Start: Some Basic Ideas | What Is RAG? | Why Does RAG Matter? | How Does RAG Work? | Example: College Scholarship Chatbot | Key Words to Remember | Quick Check | Summary",
+      "fix": ""
+    },
+    {
+      "id": "FLOW",
+      "dimension": "coherent teaching flow",
+      "type": "llm",
+      "passed": false,
+      "reason": "This sentence introduces ideas (parametric memory, non‑parametric retrieval) that are never explained later, breaking the flow because it depends on untaught concepts.",
+      "evidence": "Notwithstanding the aforementioned considerations regarding the architecture of contemporary language systems, it is nevertheless imperative that the learner appreciates the multifaceted interplay between parametric memory and non-parametric retrieval mechanisms in modern deployments.",
+      "fix": "Remove or rewrite this opening sentence using plain language; start with a simple definition of an LLM that will be explained in the next section.",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "0/1 pass"
+    },
+    {
+      "id": "SENTENCE_LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": false,
+      "reason": "Average 11.5 words/sentence (max 16); 1 sentence(s) over 30 words.",
+      "evidence": "Notwithstanding the aforementioned considerations regarding the architecture of contemporary language systems, it is nevertheless imperative that the learner appreciates the multifaceted interplay between parametric memory and non-parametric retrieval mechanisms in modern deployments.",
+      "fix": "Split long sentences. Keep every sentence under 30 words, most under 15."
+    },
+    {
+      "id": "READABILITY",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Flesch Reading Ease 75.0 on everyday words (need >= 60; raw score incl. 46 taught terms: 67.0).",
+      "evidence": "Notwithstanding the aforementioned considerations regarding the architecture of contemporary language systems, it is nevertheless imperative that the learner appreciates the multifaceted interplay between parametric memory and non-parametric retrieval mechanisms in modern deployments. || Step 2 – Augment: The retrieved chunks are placed into the prompt together with the question and an instruction like \"answer using only this information\". || Turn each chunk into an embedding (a list of numbers that represents the meaning of the text) using an embedding model (a program that turns text into embeddings).",
+      "fix": ""
+    },
+    {
+      "id": "AVOID_WORDS",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": false,
+      "reason": "Found: aforementioned, in a nutshell, notwithstanding.",
+      "evidence": "ts and one limitation of RAG. Notwithstanding the aforementioned considerations regarding the architecture of cont || rns wrong or old chunks, the answer can be wrong. In a nutshell, the retriever uses cosine similarity over an HNS || will list two benefits and one limitation of RAG. Notwithstanding the aforementioned considerations regarding the a",
+      "fix": "Replace these with simple everyday words: aforementioned, in a nutshell, notwithstanding"
+    },
+    {
+      "id": "PLAIN_LANGUAGE",
+      "dimension": "beginner-friendly language",
+      "type": "llm",
+      "passed": false,
+      "reason": "Contains complex words and structures (e.g., “notwithstanding”, “aforementioned”, “multifaceted interplay”) that are not everyday English and would be hard for the learner to understand.",
+      "evidence": "Notwithstanding the aforementioned considerations regarding the architecture of contemporary language systems, it is nevertheless imperative that the learner appreciates the multifaceted interplay between parametric memory and non-parametric retrieval mechanisms in modern deployments.",
+      "fix": "Replace with simple sentences such as: “Before we start, let’s recall what a large language model is and what it cannot do.”",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "0/1 pass"
+    },
+    {
+      "id": "LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "1074 words (allowed 900-2600).",
+      "evidence": "1074",
+      "fix": ""
+    },
+    {
+      "id": "ACRONYMS",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": false,
+      "reason": "Unexpanded acronyms: RAG (full form 'retrieval augmented generation' not given near first use); HNSW (never expanded or explained)",
+      "evidence": "RAG (full form 'retrieval augmented generation' not given near first use); HNSW (never expanded or explained)",
+      "fix": "Write each acronym in full at its first use, e.g. 'LLM (Large Language Model)'."
+    },
+    {
+      "id": "DEFINED_BEFORE_USE",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "Every listed term is defined before it is used.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "GLOSSARY",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "20 glossary entries with a meaning (need >= 8).",
+      "evidence": "- **large language model (LLM)**: a computer program that has read a huge amount of text and can write like a human. | - **training data**: the text the LLM read during its learning. | - **knowledge cutoff**: the date after which the LLM knows nothing new.",
+      "fix": ""
+    },
+    {
+      "id": "JARGON",
+      "dimension": "clear, no unexplained jargon",
+      "type": "llm",
+      "passed": true,
+      "reason": "Every technical term (model, LLM, prompt, token, training data, knowledge cutoff, hallucination, retrieval, chunk, embedding, vector, vector database, semantic search, context, fine‑tuning, weights) is explained in simple words at or before its first use.",
+      "evidence": "A model is a computer program that learns patterns from data.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ANALOGY",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "Uses an everyday analogy familiar to Indian learners (open‑book exam) and maps its parts to retrieval and generation in RAG.",
+      "evidence": "Think of an open‑book exam. A student without a book (like a plain LLM) answers only from memory. A student with a book (like RAG) first finds the right page (this is retrieval), then writes the answer using that page (this is generation).",
+      "fix": "",
+      "evidence_verified": false,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "WORKED_EXAMPLE",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "Shows a concrete user question, the retrieved text, how it is added to the prompt (augment), and the final answer (generate), with a before/after comparison.",
+      "evidence": "Question: \"What is the last date to apply for the XYZ scholarship?\" … Retrieved snippet: \"The XYZ scholarship application opens on 1st June 2024 and closes on 31st July 2024.\" … Prompt sent to LLM (augmented): > Context: … > Question: … > Instruction: …",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ACCURACY",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": false,
+      "reason": "The lesson contains multiple factual errors: it claims RAG retrains the model (M1), that answers are always 100% correct (M2), and uses the wrong full form 'Retrieval-Automated Generation' (M7).",
+      "evidence": "The best part is that RAG retrains the model with your documents every night, so its answers are always 100% correct.",
+      "fix": "Remove the false claim that RAG retrains the model nightly and guarantees 100% accuracy. Change the full form to 'Retrieval-Augmented Generation' throughout.",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "0/1 pass"
+    },
+    {
+      "id": "GROUNDED_DEFINITION",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": false,
+      "reason": "The lesson gives an incorrect full form ('Retrieval-Automated Generation') instead of 'Retrieval-Augmented Generation', violating the required definition.",
+      "evidence": "RAG (Retrieval-Automated Generation)",
+      "fix": "Replace 'Retrieval-Automated Generation' with 'Retrieval-Augmented Generation' in the title, definition, and everywhere else.",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "0/1 pass"
+    },
+    {
+      "id": "NO_OVERCLAIM",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": false,
+      "reason": "The lesson oversells RAG by stating it retrains the model and makes answers always 100% correct, which contradicts the reference sheet's limits (F12).",
+      "evidence": "The best part is that RAG retrains the model with your documents every night, so its answers are always 100% correct.",
+      "fix": "Delete the overclaim sentence and ensure the lesson only states that RAG reduces but does not eliminate hallucinations, and that answer quality depends on retrieved chunks.",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "0/1 pass"
+    },
+    {
+      "id": "COVERAGE",
+      "dimension": "covers the key points",
+      "type": "llm",
+      "passed": false,
+      "reason": "The lesson fails to teach the correct full form of RAG (K2) because it uses 'Retrieval-Automated Generation' instead of 'Retrieval-Augmented Generation'.",
+      "evidence": "MISSING: K2 - correct full form of RAG (lesson says 'Retrieval-Automated Generation')",
+      "fix": "Correct the full form to 'Retrieval-Augmented Generation' and explain each word (Retrieval, Augmented, Generation) accurately.",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "0/1 pass"
+    },
+    {
+      "id": "QUIZ",
+      "dimension": "covers the key points",
+      "type": "code",
+      "passed": false,
+      "reason": "4 question(s), 0 answer marker(s); need >= 3 with answers.",
+      "evidence": "1. What does RAG stand for? | 2. What are the three steps of RAG in order? | 3. Does RAG change the model's weights? | 5. What is one limitation of RAG?",
+      "fix": "Add a Quick Check with at least 3 questions ending in '?', each followed by '**Answer:** ...'."
+    }
+  ]
+}

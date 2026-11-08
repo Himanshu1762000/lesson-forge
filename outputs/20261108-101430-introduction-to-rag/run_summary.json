@@ -1,0 +1,99 @@
+{
+  "run_id": "20261108-101430-introduction-to-rag",
+  "topic": "Introduction to RAG",
+  "status": "NEEDS_HUMAN_REVIEW",
+  "final_attempt": 2,
+  "attempts": 3,
+  "grounding": "verified (rag_reference.md)",
+  "learning": [
+    "Sharpened rule v2 for ACRONYMS: On the first occurrence of any acronym, write its full expanded form immediately followed by the acronym in parentheses, with no other words between them (e.g., 'large language model (LLM)').",
+    "New rule v1 for DEFINED_BEFORE_USE: On the first occurrence of any core technical term from the set {embedding model, retraining, vector, chunk, embedding}, the writer must supply a brief definition either directly after the term in parentheses or as an appositive clause within the same sentence.",
+    "Sharpened rule v2 for JARGON: When first using any term from the list (model, LLM, prompt, token, training data, knowledge cutoff, hallucination, retrieval, chunk, embedding, vector, vector database, semantic search, context, fine‑tuning, weights) in headings, body, or bullets, add a plain‑language one‑sentence definition right after it."
+  ],
+  "llm_calls": [
+    {
+      "role": "planner",
+      "model": "nemotron-3-ultra",
+      "seconds": 70.4,
+      "tokens": 5726
+    },
+    {
+      "role": "generator",
+      "model": "nemotron-3-ultra",
+      "seconds": 23.7,
+      "tokens": 7094
+    },
+    {
+      "role": "judge",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "seconds": 140.8,
+      "tokens": 9393
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 26.1,
+      "tokens": 9996
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 18.0,
+      "tokens": 8035
+    },
+    {
+      "role": "reviser",
+      "model": "nemotron-3-ultra",
+      "seconds": 82.7,
+      "tokens": 8296
+    },
+    {
+      "role": "judge",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "seconds": 137.1,
+      "tokens": 8318
+    },
+    {
+      "role": "judge",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "seconds": 110.1,
+      "tokens": 9107
+    },
+    {
+      "role": "reviser",
+      "model": "nemotron-3-ultra",
+      "seconds": 73.4,
+      "tokens": 7935
+    },
+    {
+      "role": "judge",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "seconds": 51.0,
+      "tokens": 7609
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 42.2,
+      "tokens": 6818
+    },
+    {
+      "role": "coach",
+      "model": "nemotron-3-super",
+      "seconds": 3.9,
+      "tokens": 918
+    },
+    {
+      "role": "coach",
+      "model": "nemotron-3-super",
+      "seconds": 4.1,
+      "tokens": 989
+    },
+    {
+      "role": "coach",
+      "model": "nemotron-3-super",
+      "seconds": 8.3,
+      "tokens": 1703
+    }
+  ]
+}

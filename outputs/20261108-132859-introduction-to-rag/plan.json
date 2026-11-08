@@ -1,0 +1,163 @@
+{
+  "learning_goals": [
+    "Explain what an LLM is and its limits",
+    "Define RAG and each part of the name",
+    "Describe the three steps of RAG in order",
+    "Identify benefits and a key limitation of RAG"
+  ],
+  "terms_in_order": [
+    "Large Language Model (LLM)",
+    "knowledge cutoff",
+    "hallucination",
+    "Retrieval-Augmented Generation (RAG)",
+    "retrieval",
+    "augmented",
+    "generation",
+    "chunk",
+    "embedding model",
+    "embedding",
+    "vector",
+    "vector database",
+    "semantic search",
+    "top‑k",
+    "context window",
+    "fine‑tuning",
+    "retraining"
+  ],
+  "analogy": {
+    "story": "An open‑book exam in school. The student first finds the right page in the textbook, then writes the answer using that page.",
+    "mapping": "Finding the page = retrieval. Writing the answer = generation."
+  },
+  "worked_example": {
+    "setting": "Riya, a college student in Pune, uses a chatbot on her college website.",
+    "question": "What is the last date to apply for the scholarship?",
+    "documents": [
+      "Scholarship applications close on 31 March 2025.",
+      "The scholarship amount is ₹10,000 per year."
+    ],
+    "retrieved": "Scholarship applications close on 31 March 2025.",
+    "answer_without_rag": "The scholarship deadline was 31 March 2023.",
+    "answer_with_rag": "The last date to apply is 31 March 2025."
+  },
+  "sections": [
+    {
+      "heading": "What You Will Learn",
+      "goal": "List the skills you will gain in this lesson.",
+      "points": [
+        "Explain what an LLM is and its limits (F1‑F4)",
+        "Define RAG and each word in the name (F5)",
+        "Describe the three RAG steps in order (F8)",
+        "Name benefits and a key limitation of RAG (F11‑F12)"
+      ]
+    },
+    {
+      "heading": "Before We Start: Some Basic Ideas",
+      "goal": "Understand what an LLM is and its limits.",
+      "points": [
+        "LLM is a model trained on huge text (F1)",
+        "LLM knowledge stops at a cutoff date (F2)",
+        "LLM does not know private data (F3)",
+        "LLM can hallucinate, giving confident wrong answers (F4)"
+      ]
+    },
+    {
+      "heading": "What Is RAG?",
+      "goal": "Define RAG and each word in the name.",
+      "points": [
+        "RAG = Retrieval-Augmented Generation (F5)",
+        "Retrieval = finding relevant information (F5)",
+        "Augmented = adding that information to the prompt (F5)",
+        "Generation = LLM writes the answer (F5)",
+        "RAG does not retrain the model (F9)"
+      ]
+    },
+    {
+      "heading": "Why Does RAG Matter?",
+      "goal": "Explain the benefits of using RAG.",
+      "points": [
+        "Uses fresh and private data (F11)",
+        "Reduces hallucinations (F11)",
+        "Shows sources for answers (F11)",
+        "Cheaper than retraining the model (F11)",
+        "Easy to update knowledge by changing documents (F11)"
+      ]
+    },
+    {
+      "heading": "How Does RAG Work?",
+      "goal": "Describe preparation and the three question‑time steps.",
+      "points": [
+        "Preparation: split documents into chunks, turn each chunk into an embedding (list of numbers) using an embedding model, store in a vector database (F7)",
+        "Step 1 Retrieve: turn the question into an embedding, find top‑k similar chunks with semantic search (F8)",
+        "Step 2 Augment: put retrieved chunks into the prompt with an instruction (F8)",
+        "Step 3 Generate: LLM writes the answer from the prompt (F8)",
+        "Model weights stay unchanged (F9)",
+        "Fine‑tuning changes weights and is slower (F10)"
+      ]
+    },
+    {
+      "heading": "Example: College Scholarship Chatbot",
+      "goal": "Show a concrete RAG flow with a real question.",
+      "points": [
+        "User asks the scholarship deadline question",
+        "System retrieves the correct snippet from the knowledge base",
+        "Answer is built using the retrieved text",
+        "Without RAG the LLM gives an outdated date"
+      ]
+    },
+    {
+      "heading": "Key Words to Remember",
+      "goal": "List important terms with simple definitions.",
+      "points": [
+        "LLM – large language model (F1)",
+        "Knowledge cutoff – date after which model knows nothing (F2)",
+        "Hallucination – confident wrong answer (F4)",
+        "RAG – Retrieval-Augmented Generation (F5)",
+        "Chunk – small piece of a document (F7)",
+        "Embedding – list of numbers that captures meaning (F7)",
+        "Vector database – searchable store of embeddings (F7)",
+        "Semantic search – search by meaning not keywords (F8)",
+        "Top‑k – number of top chunks used (F8)",
+        "Context window – max text the prompt can hold (F12)",
+        "Fine‑tuning – further training that changes model weights (F10)"
+      ]
+    },
+    {
+      "heading": "Quick Check",
+      "goal": "Test understanding with a few questions.",
+      "points": []
+    },
+    {
+      "heading": "Summary",
+      "goal": "Recap the main ideas of the lesson.",
+      "points": [
+        "LLM has limits: cutoff, no private data, hallucinations",
+        "RAG adds external information before answering",
+        "Three steps: retrieve, augment, generate",
+        "No retraining needed; just update documents",
+        "Answer quality depends on retrieval quality"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does RAG stand for?",
+      "a": "Retrieval-Augmented Generation"
+    },
+    {
+      "q": "Which step comes first when a user asks a question in RAG?",
+      "a": "Retrieve"
+    },
+    {
+      "q": "Does RAG change the model's weights?",
+      "a": "No, RAG does not retrain or change the model."
+    },
+    {
+      "q": "What is one limitation of RAG?",
+      "a": "The answer is only as good as the retrieved chunks; bad retrieval leads to wrong answers."
+    },
+    {
+      "q": "Why is RAG cheaper than fine‑tuning?",
+      "a": "RAG only updates documents, not the model, so no extra training cost."
+    }
+  ]
+}

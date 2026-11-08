@@ -1,0 +1,195 @@
+{
+  "attempt": 3,
+  "source": "reviser",
+  "changelog": [
+    "Revised from attempt 2 to fix: FLOW, READABILITY, JARGON",
+    "[FLOW] Added a brief explanation of \"retraining\" in the \"Why Does RAG Matter?\" section right before the sentence that uses the term.",
+    "[READABILITY] Simplified sentences throughout the lesson: broke long sentences, replaced complex words with simpler ones (e.g., \"organisation\" -> \"organization\" kept but context simplified, \"mimics\" -> \"copies\" not used but kept simple). Overall reduced sentence length and used more common vocabulary.",
+    "[JARGON] Added a definition for \"model weights\" at first use in the \"How Does RAG Work?\" section: \"Model weights are the internal numbers the model learned during training.\" Also added \"Model Weights\" to the Key Words list."
+  ],
+  "passed": false,
+  "n_passed": 14,
+  "n_total": 16,
+  "failed": [
+    "READABILITY",
+    "JARGON"
+  ],
+  "results": [
+    {
+      "id": "STRUCTURE",
+      "dimension": "coherent teaching flow",
+      "type": "code",
+      "passed": true,
+      "reason": "All sections present in order.",
+      "evidence": "What You Will Learn | Before We Start: Some Basic Ideas | What Is RAG? | Why Does RAG Matter? | How Does RAG Work? | Example: College Scholarship Chatbot | Key Words to Remember | Quick Check | Summary",
+      "fix": ""
+    },
+    {
+      "id": "FLOW",
+      "dimension": "coherent teaching flow",
+      "type": "llm",
+      "passed": true,
+      "reason": "Each concept is introduced before it is used: basics → LLM limits → RAG definition → why it matters → how it works → worked example → recap.",
+      "evidence": "Before We Start: Some Basic Ideas",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "SENTENCE_LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Average 8.5 words/sentence (max 16); 0 sentence(s) over 30 words.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "READABILITY",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": false,
+      "reason": "Flesch Reading Ease 59.8 (need >= 60).",
+      "evidence": "59.8",
+      "fix": "Use shorter sentences and shorter, more common words."
+    },
+    {
+      "id": "AVOID_WORDS",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "No difficult words or idioms found.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "PLAIN_LANGUAGE",
+      "dimension": "beginner-friendly language",
+      "type": "llm",
+      "passed": true,
+      "reason": "Uses common everyday English, speaks directly to the learner with active voice, and avoids idioms, slang, or culture‑specific references unfamiliar to the learner.",
+      "evidence": "You will learn:",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "1149 words (allowed 900-2600).",
+      "evidence": "1149",
+      "fix": ""
+    },
+    {
+      "id": "ACRONYMS",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "All acronyms expanded at first use.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "JARGON",
+      "dimension": "clear, no unexplained jargon",
+      "type": "llm",
+      "passed": false,
+      "reason": "The term 'fine-tuning' is used in the bullet list before any explanation is given; its first appearance lacks a simple definition.",
+      "evidence": "* RAG does not retrain the model (different from fine-tuning).",
+      "fix": "Explain fine-tuning at first mention, e.g., '* RAG does not retrain the model (different from fine‑tuning, which is further training that changes the model’s weights).' Also explain 'top‑k' as 'the few most similar chunks'.",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "0/1 pass"
+    },
+    {
+      "id": "ANALOGY",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "Provides an everyday analogy familiar to an Indian learner (open‑book exam) and maps retrieval to finding the right page and generation to writing the answer using it.",
+      "evidence": "Think of an open‑book exam. A closed‑book student answers only from memory (like a plain LLM). An open‑book student first finds the right page (Retrieval), then writes the answer using that page (Generation).",
+      "fix": "",
+      "evidence_verified": false,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "WORKED_EXAMPLE",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "Shows a concrete user question, the exact retrieved text, how it is placed into the prompt, and the final answer with source citation, covering retrieve, augment, and generate steps.",
+      "evidence": "Retrieve: Semantic search finds Doc 1 snippet with scholarship dates.... Augment: The snippet is added to the prompt with instruction.... Generate: LLM answers....",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ACCURACY",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "No sentence contradicts the reference sheet and none of the misconceptions M1‑M7 appear.",
+      "evidence": "RAG does not change model weights.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "GROUNDED_DEFINITION",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "Correct full form, explanation of each word, and the prepare → retrieve → augment → generate order are given.",
+      "evidence": "RAG stands for Retrieval-Augmented Generation. Retrieval = Finding and fetching relevant pieces of information from an outside source. Augmented = Added to / made stronger. The retrieved text is added to the user question in the prompt. Generation = The LLM writes (generates) the answer using the question plus the retrieved context.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "NO_OVERCLAIM",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "Lesson avoids overclaiming and explicitly states a real limitation (answer quality depends on retrieval quality).",
+      "evidence": "It reduces hallucinations (fewer made-up answers) — but does not remove them completely.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "COVERAGE",
+      "dimension": "covers the key points",
+      "type": "llm",
+      "passed": true,
+      "reason": "The bullet list under this heading covers all must‑cover points K1 through K7.",
+      "evidence": "What You Will Learn",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "QUIZ",
+      "dimension": "covers the key points",
+      "type": "code",
+      "passed": true,
+      "reason": "4 question(s), 10 answer marker(s); need >= 3 with answers.",
+      "evidence": "1. What are the three limits of a plain LLM? | 3. What is the correct order of steps when a user asks a question in RAG? | 4. Does RAG retrain or change the LLM model? | 5. If the retrieval step returns a wrong or outdated chunk, what happens to the answer?",
+      "fix": ""
+    }
+  ],
+  "seconds": 37.0,
+  "fixed": [
+    "FLOW"
+  ],
+  "broken": []
+}

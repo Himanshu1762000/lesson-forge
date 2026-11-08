@@ -1,0 +1,186 @@
+{
+  "learning_goals": [
+    "Explain what an LLM is and its limits",
+    "Define RAG and its three steps",
+    "Describe how RAG prepares knowledge with chunks and embeddings",
+    "List benefits and one limitation of RAG"
+  ],
+  "terms_in_order": [
+    "model",
+    "LLM",
+    "training data",
+    "knowledge cutoff",
+    "hallucination",
+    "prompt",
+    "token",
+    "RAG",
+    "retrieval",
+    "augmented",
+    "generation",
+    "fine-tuning",
+    "weights",
+    "chunk",
+    "embedding",
+    "vector",
+    "vector database",
+    "semantic search",
+    "context"
+  ],
+  "analogy": {
+    "story": "Think of an open-book exam. A closed-book student answers only from memory. An open-book student first finds the right page in the book, then writes the answer using that page.",
+    "mapping": "Finding the right page is retrieval. Writing the answer using that page is generation. The book is the outside knowledge source."
+  },
+  "worked_example": {
+    "setting": "A college student in Delhi wants to know the last date to apply for a government scholarship. She asks a chatbot on the college website.",
+    "question": "What is the last date to apply for the PM Scholarship 2024?",
+    "documents": [
+      "PM Scholarship 2024: Application opens 1 July 2024. Last date to apply is 31 October 2024. Apply on the National Scholarship Portal.",
+      "PM Scholarship 2023: Last date was 31 October 2023. The scheme is for students of armed forces families.",
+      "College notice: The college office will help students fill the form until 25 October 2024."
+    ],
+    "retrieved": "PM Scholarship 2024: Application opens 1 July 2024. Last date to apply is 31 October 2024. Apply on the National Scholarship Portal.",
+    "answer_without_rag": "The last date is 31 December 2024. You can apply on any government website.",
+    "answer_with_rag": "The last date to apply for PM Scholarship 2024 is 31 October 2024. You must apply on the National Scholarship Portal. (Source: PM Scholarship 2024 document)"
+  },
+  "sections": [
+    {
+      "heading": "What You Will Learn",
+      "goal": "Give a quick overview of the lesson goals",
+      "points": [
+        "You will learn what an LLM is and its limits (F1, F2, F3, F4)",
+        "You will learn what RAG stands for and what each word means (F5, F6)",
+        "You will learn the three steps: retrieve, augment, generate (F8)",
+        "You will learn how knowledge is prepared with chunks and embeddings (F7)",
+        "You will learn why RAG helps and one key limit (F11, F12)"
+      ]
+    },
+    {
+      "heading": "Before We Start: Some Basic Ideas",
+      "goal": "Explain AI, LLM, and the LLM's limits in simple words",
+      "points": [
+        "A model is a computer program that learns patterns from data.",
+        "An LLM (Large Language Model) is a model trained on a huge amount of text. It predicts the next token (a word or part of a word) to generate text. Examples: models behind ChatGPT, Gemini, Claude, Llama. (F1)",
+        "Training data is the text used to teach the LLM. The LLM's knowledge stops at a fixed date called the knowledge cutoff. It does not know events after that date. (F2)",
+        "The LLM does not know private or organisation-specific information it was never trained on, like a company policy or your own notes. (F3)",
+        "LLMs can produce answers that sound confident but are wrong or made up. This is called hallucination. (F4)",
+        "A prompt is the text you give to the LLM to start its answer. A token is a word or part of a word that the LLM reads or writes."
+      ]
+    },
+    {
+      "heading": "What Is RAG?",
+      "goal": "Define RAG and the meaning of each word",
+      "points": [
+        "RAG stands for Retrieval-Augmented Generation. The term was introduced in a 2020 research paper by Patrick Lewis and colleagues at Meta. (F6)",
+        "Retrieval means finding or fetching relevant pieces of information from an outside source.",
+        "Augmented means added to or made stronger. The retrieved text is added to the question in the prompt.",
+        "Generation means the LLM writes the answer using the question plus the retrieved text. (F5)"
+      ]
+    },
+    {
+      "heading": "Why Does RAG Matter?",
+      "goal": "Explain benefits and contrast with fine-tuning",
+      "points": [
+        "RAG lets the LLM use up-to-date and private information. (F11)",
+        "It reduces made-up answers (hallucinations), though it does not remove them completely. (F11, F12)",
+        "Answers can show their sources so you can check them. (F11)",
+        "It is cheaper and faster than retraining the model. (F11)",
+        "Knowledge is easy to update by changing the documents, not the model. (F9, F11)",
+        "Fine-tuning trains the model further on new examples and changes its weights (the model's internal numbers). It is slower, costlier, and mainly used to change style or behaviour. RAG is usually the better first choice for new or changing facts. (F10)"
+      ]
+    },
+    {
+      "heading": "How Does RAG Work?",
+      "goal": "Describe preparation and the three question-time steps",
+      "points": [
+        "Preparation (indexing) is done before questions arrive: collect documents, split them into small pieces called chunks, turn each chunk into an embedding (a list of numbers that captures the meaning of the text) using an embedding model, and store them in a vector database (a searchable index for vectors). (F7)",
+        "A vector is a list of numbers that represents meaning. Semantic search finds chunks whose meaning is most similar to the question. (F7, F8)",
+        "Question-time steps:",
+        "1. Retrieve: the user's question is turned into an embedding. The system finds the top few chunks with the most similar meaning (semantic search). Keyword search or a mix can also be used. (F8)",
+        "2. Augment: the retrieved chunks are placed into the prompt together with the question and an instruction like 'answer using only this information'. This combined text is called the context. (F8)",
+        "3. Generate: the LLM writes the answer from the question plus the retrieved context. It can also cite the sources it used. (F8)",
+        "RAG does not change or retrain the model. The model's weights stay the same. To update knowledge you update the documents. (F9)"
+      ]
+    },
+    {
+      "heading": "Example: College Scholarship Chatbot",
+      "goal": "Show a concrete Indian example of RAG in action",
+      "points": [
+        "Setting: A college student in Delhi asks a chatbot on the college website about the PM Scholarship 2024 last date.",
+        "Question: 'What is the last date to apply for the PM Scholarship 2024?'",
+        "Documents in the knowledge base: three short snippets (see worked_example).",
+        "Retrieved snippet: the one with the 2024 dates and portal link.",
+        "Answer without RAG: The plain LLM guesses a wrong date and wrong portal (hallucination).",
+        "Answer with RAG: The correct date and portal, with a source citation."
+      ]
+    },
+    {
+      "heading": "Key Words to Remember",
+      "goal": "List the main technical terms with one-line definitions",
+      "points": [
+        "model: a computer program that learns patterns from data",
+        "LLM: Large Language Model, a model trained on huge text to predict next token",
+        "training data: the text used to teach the LLM",
+        "knowledge cutoff: the date after which the LLM knows nothing",
+        "hallucination: a confident but wrong or made-up answer",
+        "prompt: the text you give to the LLM to start its answer",
+        "token: a word or part of a word the LLM reads or writes",
+        "RAG: Retrieval-Augmented Generation",
+        "retrieval: finding relevant pieces of information",
+        "augmented: added to the prompt to make it stronger",
+        "generation: the LLM writing the answer",
+        "fine-tuning: training the model further to change its weights",
+        "weights: the model's internal numbers that store what it learned",
+        "chunk: a small piece of a document",
+        "embedding: a list of numbers that captures the meaning of text",
+        "vector: same as embedding, a list of numbers representing meaning",
+        "vector database: a searchable index that stores vectors",
+        "semantic search: finding chunks by meaning similarity, not just keywords",
+        "context: the retrieved chunks plus the question placed in the prompt"
+      ]
+    },
+    {
+      "heading": "Quick Check",
+      "goal": "Test understanding with 5 simple questions",
+      "points": [
+        "What does LLM stand for?",
+        "What are the three steps of RAG in order?",
+        "Does RAG change the model's weights?",
+        "What is a chunk?",
+        "Why might a RAG answer still be wrong?"
+      ]
+    },
+    {
+      "heading": "Summary",
+      "goal": "Recap the main takeaways in a few lines",
+      "points": [
+        "An LLM generates text from memory but has a knowledge cutoff, no private data, and can hallucinate.",
+        "RAG (Retrieval-Augmented Generation) adds an outside knowledge source. It retrieves relevant chunks, augments the prompt, and generates the answer.",
+        "Knowledge is prepared by splitting documents into chunks, turning them into embeddings (vectors), and storing them in a vector database.",
+        "RAG gives up-to-date, private information, shows sources, and avoids retraining. But the answer depends on the quality of retrieved chunks, and the LLM can still hallucinate.",
+        "RAG does not change the model's weights. Fine-tuning does, but it is slower and costlier."
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does LLM stand for?",
+      "a": "Large Language Model"
+    },
+    {
+      "q": "What are the three steps of RAG in the correct order?",
+      "a": "Retrieve, Augment, Generate"
+    },
+    {
+      "q": "Does RAG change the model's weights?",
+      "a": "No, RAG does not change the model's weights. The model stays the same."
+    },
+    {
+      "q": "What is a chunk?",
+      "a": "A small piece of a document created during preparation."
+    },
+    {
+      "q": "Why might a RAG answer still be wrong?",
+      "a": "If the search returns the wrong or outdated chunks, or if the LLM ignores the context, the answer can be wrong."
+    }
+  ]
+}

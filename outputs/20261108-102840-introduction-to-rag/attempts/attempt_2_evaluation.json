@@ -1,0 +1,212 @@
+{
+  "attempt": 2,
+  "source": "reviser",
+  "changelog": [
+    "Revised from attempt 1 to fix: PLAIN_LANGUAGE, ACRONYMS, ANALOGY",
+    "[PLAIN_LANGUAGE] Changed passive sentences in \"Before We Start\" to active voice addressing the learner: \"You can think of the text the LLM read during learning as its training data.\", \"We call this date the knowledge cutoff.\", \"We call this hallucination.\"",
+    "[ACRONYMS] Expanded the placeholder acronym XYZ at first use in the example question to \"XYZ (Example Scholarship)\".",
+    "[ANALOGY] Added a new subsection \"An Analogy: Open-Book Exam\" under \"What Is RAG?\" that maps retrieval to finding the right page and generation to writing the answer."
+  ],
+  "passed": true,
+  "n_passed": 18,
+  "n_total": 18,
+  "failed": [],
+  "results": [
+    {
+      "id": "STRUCTURE",
+      "dimension": "coherent teaching flow",
+      "type": "code",
+      "passed": true,
+      "reason": "All sections present in order.",
+      "evidence": "What You Will Learn | Before We Start: Some Basic Ideas | What Is RAG? | Why Does RAG Matter? | How Does RAG Work? | Example: College Scholarship Chatbot | Key Words to Remember | Quick Check | Summary",
+      "fix": ""
+    },
+    {
+      "id": "FLOW",
+      "dimension": "coherent teaching flow",
+      "type": "llm",
+      "passed": true,
+      "reason": "Each section introduces concepts before they are needed, moving from LLM basics → RAG definition → why it matters → how it works → worked example → recap.",
+      "evidence": "What Is RAG?\n\n**RAG (Retrieval-Augmented Generation)** stands for three words.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "SENTENCE_LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Average 11.0 words/sentence (max 16); 0 sentence(s) over 30 words.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "READABILITY",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Flesch Reading Ease 78.7 on everyday words (need >= 60; raw score incl. 46 taught terms: 70.1).",
+      "evidence": "Step 2 – Augment: The retrieved chunks are placed into the prompt together with the question and an instruction like \"answer using only this information\". || Turn each chunk into an embedding (a list of numbers that represents the meaning of the text) using an embedding model (a program that turns text into embeddings). || A student with a book (like RAG) first finds the right page (this is retrieval), then writes the answer using that page (this is generation).",
+      "fix": ""
+    },
+    {
+      "id": "AVOID_WORDS",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "No difficult words or idioms found.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "PLAIN_LANGUAGE",
+      "dimension": "beginner-friendly language",
+      "type": "llm",
+      "passed": true,
+      "reason": "Uses common everyday words, active voice, direct address ('you'), and avoids idioms or culture‑specific phrasing.",
+      "evidence": "A large language model (LLM) is a computer program that has read a huge amount of text.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "1045 words (allowed 900-2600).",
+      "evidence": "1045",
+      "fix": ""
+    },
+    {
+      "id": "ACRONYMS",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "All acronyms expanded at first use.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "DEFINED_BEFORE_USE",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "Every listed term is defined before it is used.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "GLOSSARY",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "20 glossary entries with a meaning (need >= 8).",
+      "evidence": "- **large language model (LLM)**: a computer program that has read a huge amount of text and can write like a human. | - **training data**: the text the LLM read during its learning. | - **knowledge cutoff**: the date after which the LLM knows nothing new.",
+      "fix": ""
+    },
+    {
+      "id": "JARGON",
+      "dimension": "clear, no unexplained jargon",
+      "type": "llm",
+      "passed": true,
+      "reason": "Every technical term (model, LLM, prompt, token, training data, knowledge cutoff, hallucination, retrieval, chunk, embedding, vector, vector database, semantic search, context, fine‑tuning, weights) is explained in simple words at its first use.",
+      "evidence": "Turn each chunk into an embedding (a list of numbers that represents the meaning of the text) using an embedding model (a program that turns text into embeddings).",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ANALOGY",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "Provides an everyday analogy familiar to Indian learners (open‑book exam) and clearly maps its parts to retrieval and generation.",
+      "evidence": "Think of an open‑book exam. A student without a book (like a plain LLM) answers only from memory. A student with a book (like RAG) first finds the right page (this is retrieval), then writes the answer using that page (this is generation).",
+      "fix": "",
+      "evidence_verified": false,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "WORKED_EXAMPLE",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "Shows a specific user question, the exact retrieved text, how it is added to the prompt (context + question + instruction), and the final answer with and without RAG.",
+      "evidence": "Retrieved snippet: The XYZ scholarship application opens on 1st June 2024 and closes on 31st July 2024.\n\nPrompt sent to LLM (augmented):\n> Context: The XYZ scholarship application opens on 1st June 2024 and closes on 31st July 2024.\n> Question: What is the last date to apply for the XYZ scholarship?\n> Instruction: Answer using only the context.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ACCURACY",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "No sentence contradicts the reference sheet and none of the misconceptions M1-M7 appear.",
+      "evidence": "RAG does not change the model's weights (the internal numbers of the model that change during training). The model stays the same.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "GROUNDED_DEFINITION",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson gives the correct full form, explains each word correctly, and describes the steps in the correct order including preparation.",
+      "evidence": "RAG (Retrieval-Augmented Generation) stands for three words. Retrieval means finding relevant information from an outside knowledge source. Augmented means adding that information to the question in the prompt. Generation means the LLM writes the answer using the question plus the added information.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "NO_OVERCLAIM",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson does not oversell RAG and clearly teaches a real limitation in the main body.",
+      "evidence": "RAG reduces made-up answers but does not remove them completely. One limitation: the answer is only as good as the retrieved chunks (small pieces of a document). If the search returns wrong or old chunks, the answer can be wrong.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "COVERAGE",
+      "dimension": "covers the key points",
+      "type": "llm",
+      "passed": true,
+      "reason": "All must-cover points K1 through K7 are taught in the main body of the lesson.",
+      "evidence": "A plain LLM has a knowledge cutoff, no private data, and can hallucinate. RAG adds a retrieval step before generation so the LLM uses fresh, relevant information. Documents are split into chunks, turned into embeddings, and stored in a vector database. At question time the system retrieves the best chunks, augments the prompt, and generates the answer. RAG does not retrain the model; it is cheaper and faster than fine-tuning. The answer quality depends on the quality of the retrieved chunks.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "QUIZ",
+      "dimension": "covers the key points",
+      "type": "code",
+      "passed": true,
+      "reason": "4 question(s), 6 answer marker(s); need >= 3 with answers.",
+      "evidence": "1. What does RAG stand for? | 2. What are the three steps of RAG in order? | 3. Does RAG change the model's weights? | 5. What is one limitation of RAG?",
+      "fix": ""
+    }
+  ],
+  "seconds": 123.8,
+  "fixed": [
+    "ACRONYMS",
+    "ANALOGY",
+    "PLAIN_LANGUAGE"
+  ],
+  "broken": []
+}

@@ -1,0 +1,39 @@
+# LessonForge configuration. Secrets and model names live in .env (see .env.example).
+
+llm:
+  timeout_seconds: 180    # per call; the slowest successful judge call seen was 162 s
+  attempts: 2             # retries per call (worst case = timeout x attempts)
+
+loop:
+  max_retries: 2          # regenerations after the first draft -> at most 3 attempts, always terminates
+  judge_votes: 1          # >1 = majority vote per LLM check (more robust, more cost)
+
+generation:
+  planner_temperature: 0.3
+  generator_temperature: 0.5
+  reviser_temperature: 0.3
+  max_tokens: 9000
+
+judge:
+  parallel: true          # judge the check groups at the same time (about half the evaluation time)
+  temperature: 0.0
+  max_tokens: 6000
+
+memory:
+  path: memory/memory.json
+  coach_min_failures: 2   # a check must fail this many times (across runs) before the coach writes a rule
+  max_samples_per_check: 6
+
+audience: >
+  A 12th-grade graduate from India who wants to start a career in AI. They have limited English
+  vocabulary and studied in a non-English-medium school (for example Hindi, Telugu, Tamil, Marathi
+  or Bengali medium). They know how to use a smartphone, WhatsApp, Google search and UPI, but they
+  have never studied computer science or AI. They start from zero.
+
+# Map topics to a grounding reference sheet. Unknown topics get a draft sheet written by the
+# planner and the run is marked "grounding: unverified".
+topics:
+  "introduction to rag": knowledge/rag_reference.md
+  "rag": knowledge/rag_reference.md
+  "rag (retrieval-augmented generation)": knowledge/rag_reference.md
+  "retrieval-augmented generation": knowledge/rag_reference.md

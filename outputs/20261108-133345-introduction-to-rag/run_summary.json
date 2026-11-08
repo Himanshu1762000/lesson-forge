@@ -1,0 +1,53 @@
+{
+  "run_id": "20261108-133345-introduction-to-rag",
+  "topic": "Introduction to RAG",
+  "status": "SHIPPED",
+  "final_attempt": 2,
+  "attempts": 2,
+  "grounding": "verified (rag_reference.md)",
+  "learning": [],
+  "llm_calls": [
+    {
+      "role": "planner",
+      "model": "nemotron-3-ultra",
+      "seconds": 80.0,
+      "tokens": 5353
+    },
+    {
+      "role": "generator",
+      "model": "nemotron-3-ultra",
+      "seconds": 29.1,
+      "tokens": 7057
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 29.4,
+      "tokens": 9390
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 55.2,
+      "tokens": 8384
+    },
+    {
+      "role": "reviser",
+      "model": "nemotron-3-ultra",
+      "seconds": 83.2,
+      "tokens": 9844
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 19.4,
+      "tokens": 8893
+    },
+    {
+      "role": "judge",
+      "model": "nemotron-3-super",
+      "seconds": 20.3,
+      "tokens": 8497
+    }
+  ]
+}

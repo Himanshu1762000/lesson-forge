@@ -1,0 +1,210 @@
+{
+  "attempt": 3,
+  "source": "reviser",
+  "changelog": [
+    "Revised from attempt 2 to fix: DEFINED_BEFORE_USE, JARGON",
+    "[DEFINED_BEFORE_USE] Moved the definition of 'vector' before its use in 'vector database'. Added a sentence \"A **vector** is a list of numbers that represents the meaning of text.\" right before the vector database sentence in the Preparation (Indexing) section.",
+    "[JARGON] Added a simple definition of 'indexing' at the start of the Preparation (Indexing) section: \"**Indexing** means organizing the chunks so they can be searched quickly.\""
+  ],
+  "passed": true,
+  "n_passed": 18,
+  "n_total": 18,
+  "failed": [],
+  "results": [
+    {
+      "id": "STRUCTURE",
+      "dimension": "coherent teaching flow",
+      "type": "code",
+      "passed": true,
+      "reason": "All sections present in order.",
+      "evidence": "What You Will Learn | Before We Start: Some Basic Ideas | What Is RAG? | Why Does RAG Matter? | How Does RAG Work? | Example: Scholarship Query | Key Words to Remember | Quick Check | Summary",
+      "fix": ""
+    },
+    {
+      "id": "FLOW",
+      "dimension": "coherent teaching flow",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson introduces core concepts (LLM limits, RAG definition, three steps) before using them later, and each section builds on the previous one.",
+      "evidence": "The three steps happen in this order: retrieve, then augment, then generate.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "SENTENCE_LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Average 9.8 words/sentence (max 16); 0 sentence(s) over 30 words.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "READABILITY",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Flesch Reading Ease 78.6 on everyday words (need >= 60; raw score incl. 56 taught terms: 68.4).",
+      "evidence": "The retrieved chunks are placed into the prompt together with the question and an instruction such as \"answer using only this information\". || Turn each chunk into an embedding (a list of numbers that captures the meaning of the text) using an embedding model (a model that converts text to numbers). || An open‑book student first retrieves the right page from the book, then generates the answer using that page.",
+      "fix": ""
+    },
+    {
+      "id": "AVOID_WORDS",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "No difficult words or idioms found.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "PLAIN_LANGUAGE",
+      "dimension": "beginner-friendly language",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson uses simple, everyday English, speaks directly to the learner with 'you', avoids idioms, slang, and culturally specific references.",
+      "evidence": "A large language model (LLM) is an AI model trained on a very large amount of text.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "1170 words (allowed 900-2600).",
+      "evidence": "1170",
+      "fix": ""
+    },
+    {
+      "id": "ACRONYMS",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "All acronyms expanded at first use.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "DEFINED_BEFORE_USE",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "Every listed term is defined before it is used.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "GLOSSARY",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "23 glossary entries with a meaning (need >= 8).",
+      "evidence": "- **artificial intelligence (AI)**: computer systems that do tasks needing human intelligence.   | - **model**: a computer program that has learned patterns from data.   | - **large language model (LLM)**: an AI model trained on huge text that predicts the next token.  ",
+      "fix": ""
+    },
+    {
+      "id": "JARGON",
+      "dimension": "clear, no unexplained jargon",
+      "type": "llm",
+      "passed": true,
+      "reason": "Every technical term (model, LLM, prompt, token, training data, knowledge cutoff, hallucination, retrieval, chunk, embedding, vector, vector database, semantic search, context, fine‑tuning, weights) is explained in simple words at or before its first use in the body of the lesson.",
+      "evidence": "'Token' is a word or part of a word.",
+      "fix": "",
+      "evidence_verified": false,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ANALOGY",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "The open‑book exam analogy is familiar to Indian learners and clearly maps retrieval to finding the page and generation to writing the answer.",
+      "evidence": "Think of a student in an exam. - A closed‑book student must answer only from memory. This is like a plain LLM. - An open‑book student first retrieves the right page from the book, then generates the answer using that page. This is like RAG. Retrieval = finding the page. Generation = writing the answer.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "WORKED_EXAMPLE",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson provides a concrete worked example with a specific user question, shows the retrieved text, shows how it is added to the prompt (augment), and shows the final answer (generate).",
+      "evidence": "Question: \"What is the last date to apply for the Maharashtra scholarship 2024?\"\nRetrieved snippet: Maharashtra Scholarship 2024: Application opens 1 June 2024. Last date to apply is 31 July 2024.\nPrompt sent to LLM (simplified):\n```\nAnswer using only the information below.\nContext: Maharashtra Scholarship 2024: Application opens 1 June 2024. Last date to apply is 31 July 2024.\nQuestion: What is the last date to apply for the Maharashtra scholarship 2024?\n```\nAnswer with RAG: The last date to apply for the Maharashtra scholarship 2024 is 31 July 2024.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ACCURACY",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "No sentence contradicts the reference sheet and none of the misconceptions M1‑M7 appear.",
+      "evidence": "RAG does not change or retrain the model. The model's weights stay the same.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "GROUNDED_DEFINITION",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson gives the correct full form, explains each word accurately, and lists the steps in the correct order (retrieve → augment → generate) with preparation described separately.",
+      "evidence": "RAG stands for Retrieval-Augmented Generation. Retrieval means finding or fetching relevant pieces of information from an outside source. Augmented means added to or made stronger. The retrieved text is added to the question in the prompt. Generation means the LLM writes (generates) the answer using the question plus the retrieved context.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "NO_OVERCLAIM",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson does not oversell RAG (it says hallucinations are reduced, not removed) and teaches a real limitation in the main body (Why Does RAG Matter? section).",
+      "evidence": "Limit: The answer is only as good as the retrieved chunks (small pieces of a document). If retrieval fails, the answer can be wrong.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "COVERAGE",
+      "dimension": "covers the key points",
+      "type": "llm",
+      "passed": true,
+      "reason": "All must‑cover points K1‑K7 are taught in the main body: K1 in Before We Start, K2 in What Is RAG?, K3 in the three‑steps description, K4 in Preparation (Indexing), K5 and K6 in Why Does RAG Matter?, K7 in the explicit statement that RAG does not retrain the model.",
+      "evidence": "Before We Start: Some Basic Ideas",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "QUIZ",
+      "dimension": "covers the key points",
+      "type": "code",
+      "passed": true,
+      "reason": "5 question(s), 7 answer marker(s); need >= 3 with answers.",
+      "evidence": "1. What does RAG stand for? | 2. What are the three steps of RAG in order? | 3. Does RAG change the model's weights? | 4. What is one benefit of RAG? | 5. What is a key limit of RAG?",
+      "fix": ""
+    }
+  ],
+  "seconds": 169.6,
+  "fixed": [
+    "DEFINED_BEFORE_USE",
+    "JARGON"
+  ],
+  "broken": []
+}

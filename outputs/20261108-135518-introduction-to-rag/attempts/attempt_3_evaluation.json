@@ -1,0 +1,208 @@
+{
+  "attempt": 3,
+  "source": "reviser",
+  "changelog": [
+    "Revised from attempt 2 to fix: JARGON",
+    "[JARGON] Defined 'context' at first use in the Limitations paragraph: changed \"The LLM can still hallucinate or ignore the context.\" to \"The LLM can still hallucinate or ignore the context (the text the model can see at once).\""
+  ],
+  "passed": true,
+  "n_passed": 18,
+  "n_total": 18,
+  "failed": [],
+  "results": [
+    {
+      "id": "STRUCTURE",
+      "dimension": "coherent teaching flow",
+      "type": "code",
+      "passed": true,
+      "reason": "All sections present in order.",
+      "evidence": "What You Will Learn | Before We Start: Some Basic Ideas | What Is RAG? | Why Does RAG Matter? | How Does RAG Work? | Example: College Scholarship Query | Key Words to Remember | Quick Check | Summary",
+      "fix": ""
+    },
+    {
+      "id": "FLOW",
+      "dimension": "coherent teaching flow",
+      "type": "llm",
+      "passed": true,
+      "reason": "Each section introduces concepts before they are used, moving from basics to RAG, its importance, how it works, an example, and a recap.",
+      "evidence": "Why Does RAG Matter?",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "SENTENCE_LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Average 9.7 words/sentence (max 16); 0 sentence(s) over 30 words.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "READABILITY",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Flesch Reading Ease 75.4 on everyday words (need >= 60; raw score incl. 34 taught terms: 70.6).",
+      "evidence": "A large language model (LLM) is an artificial intelligence (AI) model (a mathematical system that learns patterns from data) trained on a huge amount of text. || Turn each chunk into an embedding (a list of numbers that captures the meaning of the text) using an embedding model (a model that converts text to numbers). || Augment: The retrieved chunks are placed into the prompt together with the question and an instruction such as “answer using only this information”.",
+      "fix": ""
+    },
+    {
+      "id": "AVOID_WORDS",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "No difficult words or idioms found.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "PLAIN_LANGUAGE",
+      "dimension": "beginner-friendly language",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson uses simple, everyday English, speaks directly to the learner, and avoids idioms, slang, and difficult phrasal verbs.",
+      "evidence": "A large language model (LLM) is an artificial intelligence (AI) model (a mathematical system that learns patterns from data) trained on a huge amount of text.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "944 words (allowed 900-2600).",
+      "evidence": "944",
+      "fix": ""
+    },
+    {
+      "id": "ACRONYMS",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "All acronyms expanded at first use.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "DEFINED_BEFORE_USE",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "Every listed term is defined before it is used.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "GLOSSARY",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "13 glossary entries with a meaning (need >= 8).",
+      "evidence": "- **LLM**: large language model, predicts the next token.   | - **Token**: a word or part of a word.   | - **Knowledge cutoff**: date after which the model knows nothing.  ",
+      "fix": ""
+    },
+    {
+      "id": "JARGON",
+      "dimension": "clear, no unexplained jargon",
+      "type": "llm",
+      "passed": true,
+      "reason": "Every technical term is defined in simple words at or before its first appearance in the lesson.",
+      "evidence": "token (a word or part of a word)",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ANALOGY",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "The open‑book exam analogy is familiar to an Indian learner and clearly maps retrieval, augmentation, and generation to the corresponding RAG steps.",
+      "evidence": "Think of a student in an Indian classroom. - A closed‑book student answers only from memory. This is like a plain LLM. - An open‑book student first retrieves the right page from the textbook (retrieval). - Then the student augments the answer sheet by placing the page next to the question (augmentation). - Finally the student generates the answer by reading the page (generation).",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "WORKED_EXAMPLE",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "The example shows a specific user question, the retrieved text, how it is added to the prompt, and the final generated answer with source citation.",
+      "evidence": "Retrieved chunk\n> PM Scholarship 2024: Application opens 1 Jan 2024, closes 31 March 2024.\n\nPrompt sent to the LLM (augmented)\n```\nUse the information below to answer.\nInformation: PM Scholarship 2024: Application opens 1 Jan 2024, closes 31 March 2024.\nQuestion: What is the last date to apply for the PM Scholarship 2024?\nAnswer:\n```\n\nAnswer with RAG\nThe last date to apply is 31 March 2024, according to the official scheme document.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ACCURACY",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "",
+      "evidence": "RAG does not change the model **weights** (the internal numbers the model learned during training). The model stays the same.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "GROUNDED_DEFINITION",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "",
+      "evidence": "RAG (Retrieval‑Augmented Generation) ... Question time (three steps) 1. Retrieve ... 2. Augment ... 3. Generate",
+      "fix": "",
+      "evidence_verified": false,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "NO_OVERCLAIM",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "",
+      "evidence": "Fewer made‑up answers, though not zero. **Limitation:** The answer is only as good as the retrieved pieces.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "COVERAGE",
+      "dimension": "covers the key points",
+      "type": "llm",
+      "passed": true,
+      "reason": "",
+      "evidence": "The lesson includes sections on LLM limits, full form of RAG, retrieve‑augment‑generate steps, preparation (chunks & embeddings), benefits, a limitation, and that RAG does not retrain the model.",
+      "fix": "",
+      "evidence_verified": false,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "QUIZ",
+      "dimension": "covers the key points",
+      "type": "code",
+      "passed": true,
+      "reason": "4 question(s), 6 answer marker(s); need >= 3 with answers.",
+      "evidence": "1. What does RAG stand for? | 2. Which step comes first: retrieve or generate? | 3. Does RAG change the model weights? | 5. What happens if the retrieved chunk is wrong?",
+      "fix": ""
+    }
+  ],
+  "seconds": 168.6,
+  "fixed": [
+    "JARGON"
+  ],
+  "broken": []
+}

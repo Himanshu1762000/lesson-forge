@@ -1,0 +1,196 @@
+{
+  "attempt": 2,
+  "source": "reviser",
+  "changelog": [
+    "Revised from attempt 1 to fix: LENGTH, ACRONYMS, JARGON, ANALOGY",
+    "[LENGTH] Added an analogy section (~90 words) and expanded the \"What You Will Learn\" bullets with explanations (~60 words) to bring total word count above 900.",
+    "[ACRONYMS] Expanded \"LLM\" to \"Large Language Model\" and \"RAG\" to \"Retrieval-Augmented Generation\" at their first use in the \"What You Will Learn\" list.",
+    "[JARGON] Added simple explanations for each technical term (retrieve, augment, generate, etc.) directly in the \"What You Will Learn\" bullets so they are defined at first appearance.",
+    "[ANALOGY] Inserted a new section \"An Everyday Analogy: Open-Book Exam\" after \"What Is RAG?\" that maps retrieval to finding a textbook page and generation to writing the answer, using a familiar Indian exam scenario."
+  ],
+  "passed": true,
+  "n_passed": 16,
+  "n_total": 16,
+  "failed": [],
+  "results": [
+    {
+      "id": "STRUCTURE",
+      "dimension": "coherent teaching flow",
+      "type": "code",
+      "passed": true,
+      "reason": "All sections present in order.",
+      "evidence": "What You Will Learn | Before We Start: Some Basic Ideas | What Is RAG? | An Everyday Analogy: Open-Book Exam | Why Does RAG Matter? | How Does RAG Work? | Example: College Fee Query | Key Words to Remember | Quick Check | Summary",
+      "fix": ""
+    },
+    {
+      "id": "FLOW",
+      "dimension": "coherent teaching flow",
+      "type": "llm",
+      "passed": true,
+      "reason": "Each concept is introduced before it is referenced later, and the sections follow a logical progression from basics to example.",
+      "evidence": "You split each document into small pieces. Each piece is called a chunk.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "SENTENCE_LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Average 8.2 words/sentence (max 16); 0 sentence(s) over 30 words.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "READABILITY",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "Flesch Reading Ease 70.8 on everyday words (need >= 60; raw score incl. 0 taught terms: 70.8).",
+      "evidence": "model, LLM, training data, knowledge cutoff, hallucination, prompt, token, retrieval, chunk, embedding, vector, vector database, semantic search, context, augment, generate, fine‑tuning, weights || How documents are prepared for search (split into chunks, turned into embeddings, stored in a vector database). || RAG works like the open-book student: it retrieves the relevant text first, then generates the answer.",
+      "fix": ""
+    },
+    {
+      "id": "AVOID_WORDS",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "No difficult words or idioms found.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "PLAIN_LANGUAGE",
+      "dimension": "beginner-friendly language",
+      "type": "llm",
+      "passed": true,
+      "reason": "Uses common everyday words, active voice, speaks directly to the learner, and contains no idioms, slang, or difficult phrasal verbs.",
+      "evidence": "A model is a computer program that learns patterns from data.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "LENGTH",
+      "dimension": "beginner-friendly language",
+      "type": "code",
+      "passed": true,
+      "reason": "943 words (allowed 900-2600).",
+      "evidence": "943",
+      "fix": ""
+    },
+    {
+      "id": "ACRONYMS",
+      "dimension": "clear, no unexplained jargon",
+      "type": "code",
+      "passed": true,
+      "reason": "All acronyms expanded at first use.",
+      "evidence": "",
+      "fix": ""
+    },
+    {
+      "id": "JARGON",
+      "dimension": "clear, no unexplained jargon",
+      "type": "llm",
+      "passed": true,
+      "reason": "Every technical term (model, LLM, prompt, token, training data, knowledge cutoff, hallucination, retrieval, chunk, embedding, vector, vector database, semantic search, context, fine‑tuning, weights) is explained in simple words at or before its first use.",
+      "evidence": "You turn each chunk into a list of numbers that captures its meaning. This list is called an embedding.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ANALOGY",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "The open‑book exam analogy is familiar to Indian learners and clearly maps retrieval (finding the page) and generation (writing the answer using that page).",
+      "evidence": "Think of a student in an open-book exam. The student is like the LLM. The textbook is like the vector database. When a question comes, the student first finds the right page in the book. This is retrieval. Then the student reads that page and writes the answer using only that information. This is generation.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "WORKED_EXAMPLE",
+      "dimension": "teaches by example",
+      "type": "llm",
+      "passed": true,
+      "reason": "Shows a specific user question, the retrieved text, how it is added to the prompt, and the final answer, making retrieve, augment, and generate each visible with concrete content.",
+      "evidence": "Question: What is the annual fee for B.Sc. Computer Science at Government College Bhopal? ... Retrieved chunk (top match): Government College Bhopal prospectus 2024: B.Sc. Computer Science fee ₹12,000 per year. ... Prompt sent to the LLM (simplified): > Context: Government College Bhopal prospectus 2024: B.Sc. Computer Science fee ₹12,000 per year. > Question: What is the annual fee for B.Sc. Computer Science at Government College Bhopal? > Instruction: Answer using only the context. ... Answer with RAG: According to the 2024 prospectus, the fee is ₹12,000 per year.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "ACCURACY",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "No sentence contradicts the reference sheet and no misconceptions M1-M7 appear.",
+      "evidence": "The model’s weights (its internal learned numbers) do not change. Only the documents change.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "GROUNDED_DEFINITION",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson gives the correct full form, explains each word correctly, and describes the steps in the correct order (prepare, retrieve, augment, generate).",
+      "evidence": "RAG stands for Retrieval-Augmented Generation. Retrieval means finding relevant pieces of information. Augmented means adding those pieces to the question. Generation means the LLM writes the answer using the added text.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "NO_OVERCLAIM",
+      "dimension": "accurate & grounded",
+      "type": "llm",
+      "passed": true,
+      "reason": "The lesson does not oversell RAG (it acknowledges hallucinations are reduced but not eliminated) and clearly states a real limitation (answer quality depends on retrieval).",
+      "evidence": "There are fewer made-up answers, though not zero.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "COVERAGE",
+      "dimension": "covers the key points",
+      "type": "llm",
+      "passed": true,
+      "reason": "All must-cover points K1 through K7 are explicitly taught in the lesson.",
+      "evidence": "An LLM learns from training data and has a knowledge cutoff. It cannot see private data and may hallucinate. RAG adds a retrieval step before generation so the model uses fresh or private documents. Documents are split into chunks, turned into embeddings, and stored in a vector database. At query time the system retrieves, augments the prompt, then generates. RAG does not retrain the model; updating knowledge means updating documents. Benefits: up-to-date answers, sources, lower cost. Limitation: answer quality depends on retrieval.",
+      "fix": "",
+      "evidence_verified": true,
+      "rejudged": false,
+      "votes": "1/1 pass"
+    },
+    {
+      "id": "QUIZ",
+      "dimension": "covers the key points",
+      "type": "code",
+      "passed": true,
+      "reason": "4 question(s), 6 answer marker(s); need >= 3 with answers.",
+      "evidence": "1. What does RAG stand for? | 2. Which step comes first: retrieve or generate? | 3. Does RAG change the model weights? | 4. What is a chunk?",
+      "fix": ""
+    }
+  ],
+  "seconds": 195.1,
+  "fixed": [
+    "ACRONYMS",
+    "ANALOGY",
+    "JARGON",
+    "LENGTH"
+  ],
+  "broken": []
+}

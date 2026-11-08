@@ -1,0 +1,201 @@
+{
+  "learning_goals": [
+    "Explain what an LLM is and its three main limits",
+    "Define RAG and explain the meaning of Retrieval, Augmented, and Generation",
+    "Describe the three question-time steps in correct order: retrieve, augment, generate",
+    "List two benefits and one limitation of RAG"
+  ],
+  "terms_in_order": [
+    "AI",
+    "LLM",
+    "Token",
+    "Knowledge Cutoff",
+    "Hallucination",
+    "RAG",
+    "Retrieval",
+    "Augmented",
+    "Generation",
+    "Chunk",
+    "Embedding",
+    "Vector Database",
+    "Semantic Search",
+    "Context Window",
+    "Fine-tuning"
+  ],
+  "analogy": {
+    "story": "Imagine a student, Rohan, preparing for a government job exam. In a closed-book test, he answers only from memory — he might forget dates or make up facts. In an open-book test, he first searches the guide book for the right page (Retrieval), keeps that page open beside him (Augmented), and then writes the answer looking at that page (Generation).",
+    "mapping": "Rohan's memory = LLM training data (fixed, cutoff). Guide book = External knowledge base (documents). Searching the right page = Retrieval (semantic search). Keeping page open = Augmentation (adding to prompt). Writing answer = Generation (LLM produces answer)."
+  },
+  "worked_example": {
+    "setting": "Priya, a 12th-pass student from Bhopal, uses a college chatbot on her phone to ask about a scholarship.",
+    "question": "What is the last date to apply for the Merit Scholarship 2024 at Bhopal Engineering College?",
+    "documents": [
+      "Doc 1: Bhopal Engineering College Prospectus 2024. Merit Scholarship: Amount ₹20,000 per year. Eligibility: 85% in 12th. Application opens 1 June 2024. Last date to apply: 31 July 2024.",
+      "Doc 2: Hostel Fee Structure 2024. Boys hostel: ₹60,000/year. Girls hostel: ₹55,000/year. Mess charges extra.",
+      "Doc 3: Placement Stats 2023. Highest package ₹18 LPA. Average ₹6 LPA. Top recruiters: TCS, Infosys, Wipro."
+    ],
+    "retrieved": "Doc 1 snippet: 'Merit Scholarship: Amount ₹20,000 per year. Eligibility: 85% in 12th. Application opens 1 June 2024. Last date to apply: 31 July 2024.'",
+    "answer_without_rag": "The last date for most college scholarships in India is usually 30 June or 15 July. You should check the website.",
+    "answer_with_rag": "According to the Bhopal Engineering College Prospectus 2024, the last date to apply for the Merit Scholarship 2024 is 31 July 2024. [Source: Doc 1]"
+  },
+  "sections": [
+    {
+      "heading": "What You Will Learn",
+      "goal": "Set clear expectations for the lesson",
+      "points": [
+        "What an LLM is and its three limits (knowledge cutoff, no private data, hallucination) [F1, F2, F3, F4, K1]",
+        "Full form of RAG and meaning of each word [F5, F6, K2]",
+        "Three question-time steps: Retrieve → Augment → Generate [F8, K3]",
+        "How documents are prepared: chunks, embeddings, vector database [F7, K4]",
+        "Benefits: fresh/private data, fewer hallucinations, sources, no retraining [F11, K5]",
+        "Limitation: answer quality depends on retrieval quality [F12, K6]",
+        "RAG does not retrain the model (contrast with fine-tuning) [F9, F10, K7]"
+      ]
+    },
+    {
+      "heading": "Before We Start: Some Basic Ideas",
+      "goal": "Introduce AI, LLM, and LLM limits in simple words",
+      "points": [
+        "AI = computer program that can do tasks needing human-like thinking (e.g., Google search, UPI fraud detection).",
+        "LLM (Large Language Model) = AI model trained on huge text (books, websites). It predicts next token (word/part of word) to generate text [F1]. Examples: models behind ChatGPT, Gemini.",
+        "Limit 1 — Knowledge Cutoff: LLM training stops at a fixed date. It knows nothing after that [F2].",
+        "Limit 2 — No Private Data: LLM never saw your college fee list, company policy, or personal notes [F3].",
+        "Limit 3 — Hallucination: LLM can sound confident but give wrong or made-up answers [F4, K1]."
+      ]
+    },
+    {
+      "heading": "What Is RAG?",
+      "goal": "Define RAG and explain each word in the full form",
+      "points": [
+        "RAG = Retrieval-Augmented Generation. Term from 2020 paper by Patrick Lewis et al. (Meta) [F6].",
+        "Retrieval = Finding/fetching relevant pieces of information from an outside source [F5].",
+        "Augmented = Added to / made stronger. The retrieved text is added to the user question in the prompt [F5].",
+        "Generation = The LLM writes (generates) the answer using the question + retrieved context [F5].",
+        "Simple definition: Before answering, the system first searches your documents, adds the found text to the question, then the LLM answers [F5, K2]."
+      ]
+    },
+    {
+      "heading": "Why Does RAG Matter?",
+      "goal": "Explain benefits of RAG for real-world use",
+      "points": [
+        "Uses up-to-date information (no knowledge cutoff problem) [F11].",
+        "Uses private/organisation data (college prospectus, company policy) [F11, F3].",
+        "Reduces hallucinations (fewer made-up answers) — but does not remove them completely [F11, M2].",
+        "Answers can show sources (citations) so you can verify [F11, F8].",
+        "Cheaper and faster than retraining the model [F11].",
+        "Easy to update knowledge: just change documents, not the model [F11, F9]."
+      ]
+    },
+    {
+      "heading": "How Does RAG Work?",
+      "goal": "Explain preparation (indexing) and question-time steps (retrieve, augment, generate)",
+      "points": [
+        "Preparation (done once before questions arrive) [F7, K4]:",
+        "  1. Collect documents (PDFs, web pages, notes).",
+        "  2. Split into small pieces called 'chunks' (e.g., 1-2 paragraphs each).",
+        "  3. Turn each chunk into an 'embedding' — a list of numbers that captures the meaning of the text (not encryption, not compression) [F7, M4].",
+        "  4. Store embeddings in a 'vector database' for fast meaning-based search.",
+        "Question-time steps (every user question) [F8, K3]:",
+        "  1. Retrieve: User question → embedding → semantic search (find chunks with closest meaning) → take top-k chunks [F8, M5].",
+        "  2. Augment: Put retrieved chunks into prompt with question + instruction like 'Answer using only this information' [F8].",
+        "  3. Generate: LLM writes answer from question + retrieved context. Can cite sources [F8].",
+        "RAG does NOT change model weights. To update knowledge, update documents, not model [F9, K7].",
+        "Fine-tuning = trains model further, changes weights, slower/costlier, used for style/behaviour [F10, K7, M1]."
+      ]
+    },
+    {
+      "heading": "Example: College Scholarship Chatbot",
+      "goal": "Show a concrete Indian scenario with retrieved snippet and grounded answer",
+      "points": [
+        "Setting: Priya (12th-pass, Bhopal) uses college chatbot on phone [Worked Example].",
+        "Question: 'What is the last date to apply for the Merit Scholarship 2024 at Bhopal Engineering College?' [Worked Example].",
+        "Knowledge base has 3 documents (prospectus, hostel fees, placements) [Worked Example].",
+        "Retrieve: Semantic search finds Doc 1 snippet with scholarship dates [Worked Example].",
+        "Augment: Snippet added to prompt with instruction 'Answer using only this information' [F8].",
+        "Generate: LLM answers '31 July 2024' and cites Doc 1 [Worked Example].",
+        "Without RAG: LLM might guess '30 June' (hallucination) [F4, Worked Example].",
+        "With RAG: Correct, sourced answer [F11, Worked Example]."
+      ]
+    },
+    {
+      "heading": "Key Words to Remember",
+      "goal": "Provide a simple glossary of all technical terms",
+      "points": [
+        "AI: Computer program that mimics human thinking.",
+        "LLM: Large Language Model — predicts next token to generate text.",
+        "Token: A word or part of a word (LLM works in tokens).",
+        "Knowledge Cutoff: Date when LLM training stopped.",
+        "Hallucination: Confident but wrong/made-up answer.",
+        "RAG: Retrieval-Augmented Generation.",
+        "Retrieval: Finding relevant chunks from knowledge base.",
+        "Augmented: Adding retrieved text to the prompt.",
+        "Generation: LLM writing the final answer.",
+        "Chunk: Small piece of a document (1-2 paragraphs).",
+        "Embedding: List of numbers representing meaning of text.",
+        "Vector Database: Storage for embeddings, enables meaning-based search.",
+        "Semantic Search: Search by meaning, not just keywords.",
+        "Context Window: Max text LLM can take in one prompt (limits chunks).",
+        "Fine-tuning: Training model further to change weights (different from RAG)."
+      ]
+    },
+    {
+      "heading": "Quick Check",
+      "goal": "3-5 questions to verify understanding",
+      "points": [
+        {
+          "q": "What are the three limits of a plain LLM?",
+          "a": "1) Knowledge cutoff (fixed date), 2) No private data, 3) Can hallucinate (make up answers)."
+        },
+        {
+          "q": "What does RAG stand for? Explain each word in one sentence.",
+          "a": "Retrieval = find relevant chunks. Augmented = add chunks to prompt. Generation = LLM writes answer using them."
+        },
+        {
+          "q": "What is the correct order of steps when a user asks a question in RAG?",
+          "a": "Retrieve → Augment → Generate."
+        },
+        {
+          "q": "Does RAG retrain or change the LLM model?",
+          "a": "No. RAG does not change model weights. To update knowledge, you update the documents only."
+        },
+        {
+          "q": "If the retrieval step returns a wrong or outdated chunk, what happens to the answer?",
+          "a": "The answer can be wrong because RAG answer quality depends on retrieval quality."
+        }
+      ]
+    },
+    {
+      "heading": "Summary",
+      "goal": "Recap the whole lesson in 5 bullet points",
+      "points": [
+        "LLM = predicts next token; limits: cutoff date, no private data, hallucination.",
+        "RAG = Retrieval-Augmented Generation. Before answering, system retrieves relevant chunks, adds them to prompt, then LLM generates.",
+        "Preparation: documents → chunks → embeddings → vector database (done once).",
+        "Question-time: Retrieve (semantic search) → Augment (add to prompt) → Generate (answer with citations).",
+        "Benefits: fresh/private data, fewer hallucinations, sources, no retraining. Limitation: answer only as good as retrieved chunks. RAG ≠ fine-tuning."
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What are the three limits of a plain LLM?",
+      "a": "1) Knowledge cutoff (fixed date), 2) No private data, 3) Can hallucinate (make up answers)."
+    },
+    {
+      "q": "What does RAG stand for? Explain each word in one sentence.",
+      "a": "Retrieval = find relevant chunks. Augmented = add chunks to prompt. Generation = LLM writes answer using them."
+    },
+    {
+      "q": "What is the correct order of steps when a user asks a question in RAG?",
+      "a": "Retrieve → Augment → Generate."
+    },
+    {
+      "q": "Does RAG retrain or change the LLM model?",
+      "a": "No. RAG does not change model weights. To update knowledge, you update the documents only."
+    },
+    {
+      "q": "If the retrieval step returns a wrong or outdated chunk, what happens to the answer?",
+      "a": "The answer can be wrong because RAG answer quality depends on retrieval quality."
+    }
+  ]
+}
